@@ -38,6 +38,25 @@ header{background:rgba(9,10,15,.88);border-bottom-color:#3a2028;box-shadow:0 8px
 .poster-subscribe{color:#fff;background:#ed2333;border-radius:4px;padding:7px 9px;font-size:clamp(8px,2vw,11px);font-weight:950;letter-spacing:.6px;white-space:nowrap}
 .poster-note{color:#b9bdcb;font-size:11px;line-height:1.5}.studio-title{font-size:13px;font-weight:900;letter-spacing:1.2px;text-transform:uppercase;color:#ff7e8a}
 @media(min-width:700px){.poster-studio{grid-template-columns:minmax(280px,1fr) minmax(240px,.8fr);align-items:start}.poster-preview{position:sticky;top:110px}}
+
+/* FIGHTORA POSTER STUDIO */
+.studio-wrap{display:grid;grid-template-columns:1fr;gap:14px;margin-top:14px}
+.studio-kicker{font-size:11px;font-weight:900;letter-spacing:1.7px;color:#ff7e8a;text-transform:uppercase;margin:0 0 9px}
+.poster-canvas-preview{position:relative;overflow:hidden;isolation:isolate;width:100%;max-width:540px;aspect-ratio:1/1;margin:0 auto;padding:5.5%;display:flex;flex-direction:column;justify-content:space-between;border:1px solid #6f2b36;border-radius:13px;background:radial-gradient(ellipse at 80% 25%,#65212d 0,transparent 45%),linear-gradient(145deg,#211017 0%,#08090e 62%,#2a0d14 100%);box-shadow:0 15px 45px #0008}
+.poster-canvas-preview:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(120deg,transparent 0 47%,#ed233322 47% 49%,transparent 49% 57%,#ed23331c 57% 59%,transparent 59%);pointer-events:none}
+.poster-canvas-preview:after{content:"";height:5px;position:absolute;inset:0 0 auto;background:linear-gradient(90deg,#ff3348 0 46%,#74121e 46% 100%)}
+.poster-studio-brand{font-size:clamp(15px,4.3vw,25px);font-weight:1000;letter-spacing:1.7px;color:#fff;line-height:1.1}.poster-studio-brand span{color:#ff3447}
+.poster-studio-category{display:inline-block;margin-top:12px;padding:5px 8px;border:1px solid #ed23336b;border-radius:50px;background:#ed233326;color:#ffacb5;font-weight:900;letter-spacing:.8px;font-size:clamp(9px,2.1vw,12px);text-transform:uppercase}
+.poster-studio-headline{font-size:clamp(24px,6.7vw,47px);font-weight:1000;letter-spacing:-.045em;line-height:.99;text-transform:uppercase;overflow-wrap:anywhere;white-space:pre-wrap;max-height:42%;overflow:hidden;margin:12px 0 10px;text-shadow:0 3px 16px #000b}
+.poster-studio-rule{height:5px;width:48px;background:#ed2333;margin:12px 0}
+.poster-studio-summary{font-size:clamp(11px,2.7vw,16px);font-weight:600;line-height:1.4;color:#d8dae3;max-height:20%;overflow:hidden}
+.poster-studio-footer{display:flex;justify-content:space-between;align-items:flex-end;gap:8px;border-top:1px solid #ffffff32;padding-top:10px;margin-top:10px}
+.poster-studio-footer small{display:block;color:#b3b5bf;font-size:clamp(8px,1.9vw,11px);letter-spacing:.7px;margin-top:4px}
+.poster-studio-cta{background:#ed2333;color:#fff;font-size:clamp(8px,2vw,11px);font-weight:1000;letter-spacing:.5px;padding:7px 8px;white-space:nowrap}
+.studio-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.studio-actions .btn:first-child{grid-column:1 / -1;min-height:48px}
+.studio-help{font-size:11px;line-height:1.5;color:#aeb2bf}
+@media(min-width:720px){.studio-wrap{grid-template-columns:minmax(280px,1.03fr) minmax(260px,.97fr);align-items:start}.poster-canvas-preview{position:sticky;top:110px}}
 </style></head><body><header><div class="wrap"><div class="brand">FIGHTORA <b>RADAR</b></div><div class="sub">FIND THE STORY. OWN THE FEED.</div></div></header><main>
 <div class="hero"><h1>Не просто новости.<br><span>Поводы для сильных постов.</span></h1><p>Свежие темы MMA, оценка редакционного потенциала и заготовки для TikTok в стиле FIGHTORA.</p><div class="actions"><button type="button" class="btn red" onclick="topStories()">🔥 Топ темы</button><button type="button" class="btn" onclick="addOpen()">＋ Добавить новость</button><button type="button" class="btn" onclick="exportJSON()">Экспорт идей</button></div></div>
 <div class="metrics"><div class="metric"><strong id="num">6</strong><span class="muted">тем в подборке</span></div><div class="metric"><strong id="savedNum">0</strong><span class="muted">идей в запасе</span></div><div class="metric"><strong>FIGHTORA</strong><span class="muted">редакционный радар</span></div></div>
@@ -93,19 +112,80 @@ function edit(n){
  if(!n){alert('Не удалось открыть эту тему. Обнови список новостей.');return}
  window.item=n;
  const sourceURL=safeURL(n.url,'');
- const rawTitle=n.originalTitle||n.title||'Нет отдельного оригинального заголовка';
- const date=n.date||'Дата публикации не указана';
- document.getElementById('mt').textContent='Редактор поста FIGHTORA';
- document.getElementById('mb').innerHTML=
- '<div class="original-box"><b>ОРИГИНАЛ И ПРОВЕРКА</b><br>Заголовок источника: '+e(rawTitle)+'<br>Источник: '+(sourceURL?'<a href="'+e(sourceURL)+'" target="_blank" rel="noopener noreferrer">'+e(n.source||'Открыть оригинал')+'</a>':e(n.source||'Ссылка на источник не указана'))+'<br>Дата: '+e(date)+'<br><span class="status-line warn">'+e(n.status||'Перед публикацией сверь факты с оригиналом.')+'</span></div>'+
- '<div class="field"><label for="hook">Заголовок на постер</label><input id="hook" maxlength="120" value="'+e(n.hook||n.title)+'"><div class="helper">Коротко, резко, без выдуманных цитат и неподтверждённых фактов.</div></div>'+
- '<div class="field"><label for="summary">Краткое объяснение ситуации</label><textarea id="summary">'+e(n.summary||'')+'</textarea></div>'+
- '<div class="field"><label for="caption">Описание TikTok</label><textarea id="caption">'+e(n.caption||n.summary||'')+'</textarea></div>'+
- '<div class="field"><label for="tags">Хештеги</label><input id="tags" value="#FIGHTORA #UFC #MMA #НовостиUFC"></div>'+
- '<div class="notice">Перед публикацией открой оригинал. Дата RSS может быть отсутствующей, перевод — неточным, а оценка потенциала — субъективной. Не выдавай слух за официальный факт.</div>'+
- '<div class="actions"><button type="button" class="btn red" onclick="copyPack()">Копировать комплект</button><button type="button" class="btn" onclick="saveEdited()">Сохранить в запас</button></div>';
+ const originalTitle=n.originalTitle||n.title||'Заголовок оригинала не сохранён';
+ const hook=n.hook||n.title||'НОВОСТИ MMA';
+ const summary=n.posterSummary||n.summary||'Подробности — в первоисточнике.';
+ document.getElementById('mt').textContent='Студия поста FIGHTORA';
+ let html='<div class="original-box"><b>ПЕРВОИСТОЧНИК И ПРОВЕРКА</b><br>Оригинальный заголовок: '+e(originalTitle)+'<br>Источник: '+(sourceURL?'<a href="'+e(sourceURL)+'" target="_blank" rel="noopener noreferrer">'+e(n.source||'Открыть источник')+'</a>':e(n.source||'Ссылка не указана'))+'<br>Дата: '+e(n.date||'Дата публикации не указана')+'<br><span class="status-line warn">'+e(n.status||'Перед публикацией сверь факты с оригиналом.')+'</span></div>';
+ html+='<div class="studio-wrap"><div><div class="studio-kicker">Предпросмотр постера • квадрат 1080 × 1080</div><div class="poster-canvas-preview" id="posterPreview"><div><div class="poster-studio-brand">FIGHTORA <span>RADAR</span></div><span class="poster-studio-category">'+e((n.category||'MMA').toUpperCase())+'</span></div><div><div class="poster-studio-headline" id="posterHeadline">'+e(hook)+'</div><div class="poster-studio-rule"></div><div class="poster-studio-summary" id="posterSummary">'+e(summary)+'</div></div><div class="poster-studio-footer"><div><div class="poster-studio-brand" style="font-size:clamp(11px,3vw,16px)">FIGHTORA <span>INSIDE</span></div><small>НОВОСТИ • UFC • MMA</small></div><span class="poster-studio-cta">ПОДПИШИСЬ</span></div></div></div>';
+ html+='<div><div class="field"><label for="hook">Главный заголовок постера</label><textarea id="hook" maxlength="180" oninput="updatePosterPreview()">'+e(hook)+'</textarea><div class="studio-help">Цепляющий заголовок без придуманных цитат и неподтверждённых заявлений.</div></div>';
+ html+='<div class="field"><label for="summary">Краткое объяснение для постера</label><textarea id="summary" maxlength="260" oninput="updatePosterPreview()">'+e(summary)+'</textarea></div>';
+ html+='<div class="field"><label for="caption">Описание TikTok</label><textarea id="caption">'+e(n.caption||n.summary||'')+'</textarea></div>';
+ html+='<div class="field"><label for="tags">Хештеги</label><input id="tags" value="#FIGHTORA #UFC #MMA #НовостиUFC"></div>';
+ if(n.translationOK===false)html+='<div class="notice">Перевод не прошёл проверку. Не публикуй английский заголовок как русский — открой оригинал.</div>';
+ html+='<div class="notice">Кнопка ниже создаёт картинку PNG для TikTok. Сам сайт не может автоматически опубликовать пост в TikTok без отдельной интеграции.</div>';
+ html+='<div class="studio-actions"><button type="button" class="btn red" id="downloadPosterBtn" onclick="downloadPoster()">⬇ СКАЧАТЬ ГОТОВЫЙ ПОСТЕР PNG</button><button type="button" class="btn" onclick="copyPack()">Копировать текст</button><button type="button" class="btn" onclick="saveEdited()">📌 В запас</button></div></div></div>';
+ document.getElementById('mb').innerHTML=html;
  document.getElementById('modal').classList.add('open');
+ updatePosterPreview();
 }
+function updatePosterPreview(){
+ const h=document.getElementById('hook'),s=document.getElementById('summary');
+ const ph=document.getElementById('posterHeadline'),ps=document.getElementById('posterSummary');
+ if(ph&&h)ph.textContent=h.value.toUpperCase();
+ if(ps&&s)ps.textContent=s.value;
+}
+
+function posterWrapText(ctx,text,x,y,maxWidth,lineHeight,maxLines){
+ const words=String(text||'').split(/\\s+/);
+ let line='',lines=[];
+ for(let i=0;i<words.length;i++){
+  const test=line?line+' '+words[i]:words[i];
+  if(ctx.measureText(test).width>maxWidth&&line){lines.push(line);line=words[i];if(lines.length>=maxLines)break}
+  else line=test;
+ }
+ if(line&&lines.length<maxLines)lines.push(line);
+ if(lines.length===maxLines&&words.join(' ').length>lines.join(' ').length)lines[maxLines-1]=lines[maxLines-1].replace(/[ .…]*$/,'')+'…';
+ for(let i=0;i<lines.length;i++)ctx.fillText(lines[i],x,y+i*lineHeight);
+ return lines.length;
+}
+function loadPosterPhoto(url){
+ return new Promise(function(resolve){
+  if(!url){resolve(null);return}
+  const im=new Image();im.crossOrigin='anonymous';
+  im.onload=function(){resolve(im)};im.onerror=function(){resolve(null)};im.src=url;
+  setTimeout(function(){resolve(null)},3500);
+ });
+}
+async function downloadPoster(){
+ const button=document.getElementById('downloadPosterBtn');
+ if(button){button.disabled=true;button.textContent='ГОТОВЛЮ ПОСТЕР…'}
+ try{
+  const n=window.item||{};
+  const headline=String((document.getElementById('hook')&&document.getElementById('hook').value)||n.hook||n.title||'НОВОСТИ MMA').trim().toUpperCase();
+  const summary=String((document.getElementById('summary')&&document.getElementById('summary').value)||n.posterSummary||n.summary||'Подробности — в первоисточнике.').trim();
+  const canvas=document.createElement('canvas');canvas.width=1080;canvas.height=1080;
+  const ctx=canvas.getContext('2d');if(!ctx)throw new Error('Canvas недоступен');
+  const bg=ctx.createLinearGradient(0,0,1080,1080);bg.addColorStop(0,'#281017');bg.addColorStop(.55,'#08090d');bg.addColorStop(1,'#300d16');ctx.fillStyle=bg;ctx.fillRect(0,0,1080,1080);
+  const photo=await loadPosterPhoto(safeURL(n.imageURL,''));
+  if(photo){const scale=Math.max(1080/photo.width,680/photo.height),w=photo.width*scale,h=photo.height*scale;ctx.save();ctx.globalAlpha=.36;ctx.drawImage(photo,(1080-w)/2,(640-h)/2,w,h);ctx.restore()}
+  const overlay=ctx.createLinearGradient(0,0,0,1080);overlay.addColorStop(0,'rgba(6,7,11,.25)');overlay.addColorStop(.42,'rgba(6,7,11,.68)');overlay.addColorStop(1,'rgba(6,7,11,.96)');ctx.fillStyle=overlay;ctx.fillRect(0,0,1080,1080);
+  ctx.fillStyle='#ed2333';ctx.fillRect(0,0,1080,12);ctx.fillStyle='#fff';ctx.font='900 48px Arial,sans-serif';ctx.fillText('FIGHTORA',68,105);ctx.fillStyle='#ff3447';ctx.fillText('RADAR',330,105);
+  ctx.fillStyle='#ffadb7';ctx.font='bold 23px Arial,sans-serif';ctx.fillText(String(n.category||'MMA').toUpperCase().slice(0,32),70,158);
+  ctx.fillStyle='#ed2333';ctx.fillRect(70,190,92,8);ctx.fillStyle='#fff';ctx.font='900 62px Arial,sans-serif';
+  const lineCount=posterWrapText(ctx,headline,70,280,930,68,6);
+  ctx.fillStyle='#dfe0e7';ctx.font='600 30px Arial,sans-serif';posterWrapText(ctx,summary,72,Math.min(735,330+lineCount*66),880,42,4);
+  ctx.fillStyle='rgba(255,255,255,.22)';ctx.fillRect(70,930,940,2);ctx.fillStyle='#fff';ctx.font='bold 27px Arial,sans-serif';ctx.fillText('FIGHTORA INSIDE',70,982);
+  ctx.fillStyle='#a8aab5';ctx.font='20px Arial,sans-serif';ctx.fillText('НОВОСТИ • UFC • MMA',70,1022);ctx.fillStyle='#ed2333';ctx.fillRect(790,954,220,58);
+  ctx.fillStyle='#fff';ctx.font='bold 22px Arial,sans-serif';ctx.textAlign='center';ctx.fillText('ПОДПИШИСЬ',900,990);ctx.textAlign='left';
+  const blob=await new Promise(function(resolve){canvas.toBlob(resolve,'image/png')});
+  if(!blob)throw new Error('Не удалось создать PNG');
+  const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='FIGHTORA_POST_'+Date.now()+'.png';document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(url)},5000);
+  if(!photo){const note=document.querySelector('.studio-help');if(note)note.textContent='PNG готов. Не удалось безопасно встроить фото, поэтому сохранён фирменный графический постер.'}
+ }catch(err){alert('Не удалось скачать PNG: '+(err&&err.message?err.message:'ошибка экспорта'))}
+ finally{if(button){button.disabled=false;button.textContent='⬇ СКАЧАТЬ ГОТОВЫЙ ПОСТЕР PNG'}}
+}
+
 function copyText(t){if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(()=>alert('Скопировано')).catch(()=>fallback(t));else fallback(t)}
 function fallback(t){let x=document.createElement('textarea');x.value=t;document.body.appendChild(x);x.select();document.execCommand('copy');x.remove();alert('Скопировано')}
 function copyPack(){copyText(document.getElementById('hook').value+'\n\n'+document.getElementById('summary').value+'\n\n'+document.getElementById('caption').value+'\n\n'+document.getElementById('tags').value)}
@@ -131,13 +211,28 @@ function exportJSON(){let b=new Blob([JSON.stringify({saved,custom,live,lastRefr
 async function readFeed(feed){
  // Try RSS2JSON first, then direct XML through public CORS relays.
  const methods=[
-  async()=>{const r=await fetch('https://api.rss2json.com/v1/api.json?rss_url='+encodeURIComponent(feed.url),{signal:AbortSignal.timeout(9000)});if(!r.ok)throw Error('RSS2JSON HTTP '+r.status);const j=await r.json();if(j.status!=='ok'||!Array.isArray(j.items))throw Error(j.message||'RSS2JSON error');return j.items.map(x=>({title:x.title,description:x.description||x.content,link:x.link,pubDate:x.pubDate,author:x.author}));},
+  async()=>{const r=await fetch('https://api.rss2json.com/v1/api.json?rss_url='+encodeURIComponent(feed.url),{signal:AbortSignal.timeout(9000)});if(!r.ok)throw Error('RSS2JSON HTTP '+r.status);const j=await r.json();if(j.status!=='ok'||!Array.isArray(j.items))throw Error(j.message||'RSS2JSON error');return j.items.map(x=>({title:x.title,description:x.description||x.content,link:x.link,pubDate:x.pubDate,author:x.author,imageURL:x.thumbnail||(x.enclosure&&x.enclosure.link)||(x.enclosure&&x.enclosure.url)||extractImage(x.description||x.content||'')}));},
   async()=>{const r=await fetch('https://api.allorigins.win/raw?url='+encodeURIComponent(feed.url),{signal:AbortSignal.timeout(9000)});if(!r.ok)throw Error('AllOrigins HTTP '+r.status);return parseXML(await r.text());},
   async()=>{const r=await fetch('https://corsproxy.io/?url='+encodeURIComponent(feed.url),{signal:AbortSignal.timeout(9000)});if(!r.ok)throw Error('CORS proxy HTTP '+r.status);return parseXML(await r.text());}
  ];
  let last;for(const method of methods){try{const items=await method();if(items&&items.length)return items}catch(err){last=err}}throw last||Error('Все способы загрузки недоступны')
 }
-function parseXML(raw){const doc=new DOMParser().parseFromString(raw,'text/xml');if(doc.querySelector('parsererror'))throw Error('Некорректный XML');let nodes=[...doc.querySelectorAll('item')];if(!nodes.length)nodes=[...doc.querySelectorAll('entry')];return nodes.map(n=>({title:n.querySelector('title')?.textContent||'',description:n.querySelector('description')?.textContent||n.querySelector('summary')?.textContent||n.querySelector('content')?.textContent||'',link:n.querySelector('link')?.getAttribute('href')||n.querySelector('link')?.textContent||'',pubDate:n.querySelector('pubDate')?.textContent||n.querySelector('published')?.textContent||n.querySelector('updated')?.textContent||'',author:n.querySelector('author name')?.textContent||n.querySelector('author')?.textContent||''}))}
+function extractImage(html){
+ const m=String(html||'').match(/<img[^>]+src=["']([^"']+)["']/i);
+ return m?safeURL(m[1],''):'';
+}
+function parseXML(raw){
+ const doc=new DOMParser().parseFromString(raw,'text/xml');
+ if(doc.querySelector('parsererror'))throw Error('Некорректный XML');
+ let nodes=Array.from(doc.querySelectorAll('item'));
+ if(!nodes.length)nodes=Array.from(doc.querySelectorAll('entry'));
+ return nodes.map(n=>{
+  const description=n.querySelector('description')?.textContent||n.querySelector('summary')?.textContent||n.querySelector('content')?.textContent||'';
+  const enclosure=n.querySelector('enclosure[url]')?.getAttribute('url')||'';
+  const imageURL=enclosure||extractImage(description);
+  return {title:n.querySelector('title')?.textContent||'',description,link:n.querySelector('link')?.getAttribute('href')||n.querySelector('link')?.textContent||'',pubDate:n.querySelector('pubDate')?.textContent||n.querySelector('published')?.textContent||n.querySelector('updated')?.textContent||'',author:n.querySelector('author name')?.textContent||n.querySelector('author')?.textContent||'',imageURL:safeURL(imageURL,'')};
+ });
+}
 function hasCyrillic(s){return /[А-Яа-яЁё]/.test(String(s||''))}
 function needsRussian(s){return !hasCyrillic(s)&&/[A-Za-z]{4,}/.test(String(s||''))}
 function validRussianTranslation(source,out){const o=String(out||'').trim();if(!o)return false;if(needsRussian(source)&&!hasCyrillic(o))return false;if(needsRussian(source)&&o.toLowerCase()===String(source||'').trim().toLowerCase())return false;return true}
