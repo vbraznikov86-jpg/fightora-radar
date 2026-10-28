@@ -1,5 +1,28 @@
 <!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b0b0d"><title>FIGHTORA RADAR</title><style>
 :root{--bg:#09090b;--p:#151519;--line:#303037;--red:#ed2333;--muted:#a1a1aa;--txt:#f5f5f5}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top right,#321016,transparent 38%),var(--bg);color:var(--txt);font:15px/1.45 system-ui,Arial}header{padding:18px;border-bottom:1px solid var(--line);position:sticky;top:0;background:#0b0b0dee;backdrop-filter:blur(10px);z-index:2}.wrap{max-width:1050px;margin:auto}.brand{font-size:23px;font-weight:950;letter-spacing:1px}.brand b{color:var(--red)}.sub{font-size:10px;letter-spacing:2px;color:var(--muted)}main{max-width:1050px;margin:auto;padding:16px 12px 70px}.hero,.card,.metric,.saved{border:1px solid var(--line);background:var(--p);border-radius:15px;padding:16px}.hero{background:linear-gradient(120deg,#291016,#141418);border-color:#55232a}.hero h1{font-size:clamp(25px,5vw,38px);line-height:1.05;margin:0 0 10px}.hero h1 span{color:var(--red)}p{color:#d0d0d5}.muted{color:var(--muted);font-size:12px}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:12px 0}.metric strong{font-size:23px;display:block}.btn{touch-action:manipulation;position:relative;z-index:1; -webkit-tap-highlight-color:transparent;background:#24242a;color:white;border:1px solid #414149;border-radius:9px;padding:10px 12px;font-weight:700;cursor:pointer}.btn.red{background:var(--red);border-color:var(--red)}.actions{display:flex;gap:7px;flex-wrap:wrap}.notice{padding:10px;border-left:3px solid #f5b942;background:#211c12;color:#d9d0bd;border-radius:5px;font-size:12px;margin:14px 0}.tools{display:flex;gap:8px;flex-wrap:wrap;margin:15px 0}.tools input,.tools select,.field input,.field textarea{background:#101014;color:white;border:1px solid var(--line);padding:11px;border-radius:9px;min-width:0}.tools input{flex:1}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.card{display:flex;flex-direction:column;gap:9px}.top{display:flex;justify-content:space-between;gap:8px;align-items:center}.tag{font-size:11px;padding:4px 8px;border:1px solid #51242a;border-radius:99px;color:#ff9ca4;background:#2b1116}.score{font-weight:900;color:#63e0a1;font-size:12px}.card h3{margin:0;font-size:18px;line-height:1.25}.card p{margin:0}.source{color:#ff8c96}.card .actions{margin-top:auto}.card .btn{font-size:12px;padding:8px}.section{margin-top:22px}.section h2{font-size:21px}.empty{padding:24px;text-align:center;border:1px dashed #444;border-radius:12px;color:var(--muted)}.saved{margin:8px 0}.field{display:flex;flex-direction:column;gap:5px;margin:10px 0}.field textarea{min-height:80px}.modal{display:none;position:fixed;inset:0;background:#000c;z-index:10;align-items:flex-end;justify-content:center;padding:10px}.modal.open{display:flex;pointer-events:auto}.sheet{pointer-events:auto}.sheet{background:#17171b;border:1px solid #444;border-radius:16px;padding:17px;width:min(700px,100%);max-height:90vh;overflow:auto}.sheethead{display:flex;justify-content:space-between}.sheethead h2{margin:0}.x{background:none;border:0;color:white;font-size:26px}@media(max-width:650px){.grid{grid-template-columns:1fr}.metrics{grid-template-columns:repeat(3,1fr)}.metric{padding:10px}.metric strong{font-size:19px}}
+
+/* FIGHTORA RADAR visual refresh */
+:root{color-scheme:dark;--bg:#08090d;--p:#121319;--line:#2b2d38;--red:#f12b3c;--muted:#a1a6b5;--txt:#f7f8fb;--gold:#f0bd64;--green:#6be3a0}
+body{background:radial-gradient(ellipse at 15% -8%,#45121b 0,transparent 38%),radial-gradient(ellipse at 100% 15%,#1d1d35 0,transparent 35%),var(--bg);letter-spacing:.01em}
+header{background:rgba(9,10,15,.88);border-bottom-color:#3a2028;box-shadow:0 8px 34px #0004}
+.brand{font-size:25px;letter-spacing:1.7px}.brand b{color:#ff394b;text-shadow:0 0 22px #f12b3c55}
+.sub{display:flex;align-items:center;gap:9px;letter-spacing:1.7px}
+.sub:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 12px #6be3a0aa}
+.hero{position:relative;overflow:hidden;padding:clamp(19px,4vw,30px);box-shadow:0 18px 50px #0005}
+.hero:after{content:"FR";position:absolute;right:18px;bottom:-42px;font-size:clamp(90px,18vw,180px);font-weight:1000;letter-spacing:-.1em;color:#ffffff06;pointer-events:none}
+.hero h1{letter-spacing:-.04em}.hero p{max-width:650px;color:#d7d9e2}
+.btn{transition:transform .16s ease,border-color .16s ease,background .16s ease;min-height:40px}.btn:hover{transform:translateY(-1px);border-color:#777986}.btn.red{box-shadow:0 5px 18px #ed233326}.btn:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:2px solid #ff6470;outline-offset:2px}
+.metric{background:linear-gradient(145deg,#171820,#101116);box-shadow:0 8px 26px #0002}.metric strong{letter-spacing:-.04em}
+.notice{border:1px solid #5d4622;border-left:3px solid var(--gold);line-height:1.55}
+.tools{align-items:center}.tools input,.tools select,.field input,.field textarea,.field select{width:100%;font:inherit;background:#0b0c11;border-color:#333643}.tools input{min-width:180px}.tools select{max-width:230px}
+.grid{align-items:stretch}.card{position:relative;min-width:0;background:linear-gradient(150deg,#171820,#101116 80%);box-shadow:0 10px 30px #0003;transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease;overflow:hidden}.card:hover{transform:translateY(-2px);border-color:#65303a;box-shadow:0 15px 34px #0005}.card h3{letter-spacing:-.02em;overflow-wrap:anywhere}.card p{line-height:1.55;overflow-wrap:anywhere}.score{white-space:nowrap;color:var(--green)}.tag{max-width:70%;line-height:1.3}.date-warning{color:#f3c678!important}.status-line{font-size:11px;line-height:1.5;color:#aeb2c0}.status-line.warn{color:#f0c777}.source{overflow-wrap:anywhere}.card .actions{padding-top:5px}.card .btn{min-height:38px}
+.empty{background:#111218;border-color:#333642;line-height:1.7}
+.saved{background:#121319}.saved p{overflow-wrap:anywhere}.modal{align-items:center;backdrop-filter:blur(8px)}.sheet{background:linear-gradient(150deg,#191a22,#101116);border-color:#4a2a32;box-shadow:0 24px 100px #000a}
+.sheethead{position:sticky;top:-17px;background:#171820ed;padding:4px 0 12px;z-index:1}.sheethead h2{font-size:21px;letter-spacing:-.03em}
+.field label{font-size:12px;font-weight:800;color:#d6d7e1}.field textarea{resize:vertical;min-height:96px}.field .helper{font-size:11px;color:var(--muted);line-height:1.5}
+.original-box{padding:12px;border:1px solid #3b3d49;background:#0d0e13;border-radius:10px;font-size:13px;line-height:1.55;overflow-wrap:anywhere}.original-box b{color:#ff9ba4}.original-box a{color:#ff9ba4}
+@media(max-width:650px){header{padding:15px 14px}.brand{font-size:22px}.sub{font-size:9px}.hero{border-radius:14px}.metrics{gap:7px}.metric strong{font-size:17px}.metric .muted{font-size:10px}.tools select{max-width:none;width:100%}.actions .btn{flex:0 1 auto}.modal{padding:8px}.sheet{max-height:94vh;padding:14px;border-radius:15px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;scroll-behavior:auto!important}}
 </style></head><body><header><div class="wrap"><div class="brand">FIGHTORA <b>RADAR</b></div><div class="sub">FIND THE STORY. OWN THE FEED.</div></div></header><main>
 <div class="hero"><h1>Не просто новости.<br><span>Поводы для сильных постов.</span></h1><p>Свежие темы MMA, оценка редакционного потенциала и заготовки для TikTok в стиле FIGHTORA.</p><div class="actions"><button type="button" class="btn red" onclick="topStories()">🔥 Топ темы</button><button type="button" class="btn" onclick="addOpen()">＋ Добавить новость</button><button type="button" class="btn" onclick="exportJSON()">Экспорт идей</button></div></div>
 <div class="metrics"><div class="metric"><strong id="num">6</strong><span class="muted">тем в подборке</span></div><div class="metric"><strong id="savedNum">0</strong><span class="muted">идей в запасе</span></div><div class="metric"><strong>FIGHTORA</strong><span class="muted">редакционный радар</span></div></div>
@@ -11,10 +34,13 @@
 <div class="modal" id="modal" onclick="if(event.target===this)closeModal()"><div class="sheet"><div class="sheethead"><h2 id="mt">Заготовка для TikTok</h2><button class="x" onclick="closeModal()">×</button></div><div id="mb"></div></div></div>
 <script>
 const seed=[{"id":"fallback1","title":"Кто заслуживает следующий титульный бой?","summary":"Резервная тема: выбери актуального претендента и проверь последние результаты, рейтинг и заявления UFC перед публикацией.","category":"Спорное мнение","date":"Резервная идея • проверь актуальность","score":78,"status":"Резервная тема — не свежая новость","why":"Провоцирует аргументированный спор, если подкрепить актуальными фактами.","hook":"КТО ДЕЙСТВИТЕЛЬНО ЗАСЛУЖИЛ ТИТУЛЬНЫЙ БОЙ?","caption":"Кто, по-вашему, заслужил следующий титульный шанс? Обоснуйте мнение. #FIGHTORA #UFC #MMA","source":"UFC News","url":"https://www.ufc.com/news"},{"id":"fallback2","title":"Деньги в UFC: сколько получают бойцы?","summary":"Резервная тема: сравни только подтверждённые выплаты из надёжных источников и чётко отличай официальные данные от оценок.","category":"Деньги / UFC","date":"Резервная идея • проверь актуальность","score":82,"status":"Резервная тема — не свежая новость","why":"Финансовые темы вызывают интерес, особенно когда цифры подтверждены.","hook":"СКОЛЬКО НА САМОМ ДЕЛЕ ЗАРАБАТЫВАЮТ БОЙЦЫ UFC?","caption":"Выплаты бойцов всегда вызывают споры. Какие цифры стоит раскрывать в следующем разборе? #FIGHTORA #UFC #MMA","source":"MMA Fighting","url":"https://www.mmafighting.com/"},{"id":"fallback3","title":"Реванш, которого больше всего ждут фанаты","summary":"Резервная тема: найди свежие подтверждённые комментарии или официальное объявление о потенциальном реванше. Не выдавай слухи за факт.","category":"Конфликт / реванш","date":"Резервная идея • проверь актуальность","score":80,"status":"Резервная тема — не свежая новость","why":"Понятный конфликт и вопрос аудитории могут дать сильную дискуссию.","hook":"ЭТОТ РЕВАНШ НУЖЕН UFC?","caption":"Какой реванш вы действительно хотите увидеть — и почему? #FIGHTORA #UFC #MMA","source":"Sherdog News","url":"https://www.sherdog.com/news/news/list/1"},{"id":"fallback4","title":"Самое спорное решение судей: разбор по раундам","summary":"Резервная тема: выбери бой, проверь официальные карточки судей, затем сравни их с критериями судейства. Не называй ограблением без разбора.","category":"Спорное мнение","date":"Резервная идея • проверь актуальность","score":76,"status":"Резервная тема — не свежая новость","why":"Разбор конкретных раундов стимулирует обсуждение, если он честный и аргументированный.","hook":"СПОРНОЕ РЕШЕНИЕ? РАЗБИРАЕМ ПО РАУНДАМ","caption":"Как вы оценили бы этот бой? Обсуждаем по раундам, без оскорблений. #FIGHTORA #UFC #MMA","source":"UFC News","url":"https://www.ufc.com/news"},{"id":"fallback5","title":"Кто из проспектов готов к топ-15?","summary":"Резервная тема: проверь актуальный рейтинг, последние соперники и результаты перспективного бойца перед выбором кандидата.","category":"Заявление бойца","date":"Резервная идея • проверь актуальность","score":72,"status":"Резервная тема — не свежая новость","why":"Аудитории нравится спорить о будущих звёздах и следующем шаге карьеры.","hook":"ЭТО БУДУЩАЯ ЗВЕЗДА UFC?","caption":"Кого из перспективных бойцов пора проверить боем с топ-15? #FIGHTORA #UFC #MMA","source":"UFC News","url":"https://www.ufc.com/news"},{"id":"fallback6","title":"Что изменилось в дивизионе после последнего турнира?","summary":"Резервная тема: проверь последние результаты и обновлённые рейтинги, прежде чем делать выводы о претендентах.","category":"Предстоящий турнир","date":"Резервная идея • проверь актуальность","score":70,"status":"Резервная тема — не свежая новость","why":"Помогает объяснить последствия турнира и возможные следующие бои.","hook":"КАК ТЕПЕРЬ ВЫГЛЯДИТ ДИВИЗИОН?","caption":"Кого теперь нужно ставить следующим в очереди? #FIGHTORA #UFC #MMA","source":"UFC Rankings","url":"https://www.ufc.com/rankings"}];
-let live=JSON.parse(localStorage.getItem('fr_live')||'[]');
-let custom=JSON.parse(localStorage.getItem('fr_custom')||'[]');
-let saved=JSON.parse(localStorage.getItem('fr_saved')||'[]');
+function loadJSON(key,fallback){try{const v=JSON.parse(localStorage.getItem(key)||'null');return v==null?fallback:v}catch(_){return fallback}}
+function storeJSON(key,value){try{localStorage.setItem(key,JSON.stringify(value));return true}catch(_){return false}}
+let live=loadJSON('fr_live',[]);
+let custom=loadJSON('fr_custom',[]);
+let saved=loadJSON('fr_saved',[]);
 let lastRefresh=localStorage.getItem('fr_last_refresh')||'';
+let refreshInProgress=false;
 const feeds=[
  {name:'MMA Fighting',url:'https://www.mmafighting.com/rss/current.xml'},
  {name:'UFC.com',url:'https://www.ufc.com/rss/news'},
@@ -22,26 +48,70 @@ const feeds=[
  {name:'Google News: MMA fighters',url:'https://news.google.com/rss/search?q=MMA+fighter+when:7d&hl=en-US&gl=US&ceid=US:en'}
 ];
 function all(){return [...custom,...live,...seed]}
+function safeURL(value,fallback='#'){try{const u=new URL(String(value||''),location.href);return ['https:','http:'].includes(u.protocol)?u.href:fallback}catch(_){return fallback}}
+function cleanText(value){const p=document.createElement('div');p.innerHTML=String(value||'');return (p.textContent||p.innerText||'').replace(/\\s+/g,' ').trim()}
 function e(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function scoreItem(t,desc){let s=(t+' '+desc).toLowerCase(),score=58;for(let [w,n] of [['dana white',9],['petr yan',9],['islam makhachev',8],['conor mcgregor',8],['controvers',8],['slams',7],['calls out',7],['rematch',7],['pay',7],['money',7],['knockout',6],['title',5],['injury',5],['ufc',3],['mma',2]])if(s.includes(w))score+=n;return Math.max(45,Math.min(96,score))}
 function categoryFor(t){let s=t.toLowerCase();if(/pay|money|salary|purse|million|revenue|выплат|деньг/.test(s))return 'Деньги / UFC';if(/rematch|yan|rival|call.*out|slams|critic|feud|реванш|конфликт/.test(s))return 'Конфликт / реванш';if(/fight night|ufc \d+|event|card|fight announced|vs\./.test(s))return 'Предстоящий турнир';return 'Заявление бойца'}
 function makeHook(t){let clean=t.replace(/\s+/g,' ').trim();return clean.length>65?clean.slice(0,62).replace(/[ ,:;—-]+$/,'').toUpperCase()+'…':clean.toUpperCase()}
 function allUnique(items){let seen=new Set();return items.filter(n=>{let key=(n.url||n.title).split('?')[0].toLowerCase();if(seen.has(key))return false;seen.add(key);return true})}
-function render(){let q=document.getElementById('q').value.toLowerCase(),cat=document.getElementById('cat').value;let arr=allUnique(all()).filter(n=>!(n.id&&String(n.id).startsWith('live_')&&n.date&&n.date!=='')||true).filter(n=>(!q||(n.title+' '+n.summary+' '+n.category).toLowerCase().includes(q))&&(!cat||n.category===cat)).sort((a,b)=>b.score-a.score);document.getElementById('num').textContent=arr.length;document.getElementById('savedNum').textContent=saved.length;document.getElementById('cards').innerHTML=arr.map(n=>`<article class="card"><div class="top"><span class="tag">${e(n.category)}</span><span class="score">ПОТЕНЦИАЛ ${n.score}/100</span></div><h3>${e(n.title)}</h3><p>${e(n.summary)}</p><div class="muted">${e(n.date)} • ${e(n.status||'Новость из ленты')}</div><p><b>Почему может сработать:</b> ${e(n.why||'Свежий повод; проверь контекст, актуальность и реакцию аудитории.')}</p><div class="muted">Источник: <a class="source" target="_blank" rel="noopener" href="${e(n.url)}">${e(n.source||'Открыть источник')}</a></div><div class="actions"><button type="button" class="btn red" onclick="post('${e(n.id)}')">✍️ Создать пост</button><button type="button" class="btn" onclick="save('${e(n.id)}')">📌 В запас</button></div></article>`).join('')||'<div class="empty">Ничего не найдено.</div>';renderSaved();document.getElementById('refreshStatus').textContent=lastRefresh?'Последняя проверка: '+new Date(lastRefresh).toLocaleString('ru-RU')+' • обновление раз в 15 минут':'Нажми «Обновить новости», чтобы загрузить свежие темы.'}
-function renderSaved(){document.getElementById('savedList').innerHTML=saved.length?saved.map((n,i)=>`<div class="saved"><b>${e(n.title)}</b><p>${e(n.hook||n.summary)}</p><button type="button" class="btn" onclick="editSaved(${i})">Открыть</button> <button type="button" class="btn" onclick="delSaved(${i})">Удалить</button></div>`).join(''):'<div class="empty">Пока нет сохранённых идей. Нажми «В запас» у темы.</div>'}
+function render(){
+ const q=document.getElementById('q').value.toLowerCase().trim(),cat=document.getElementById('cat').value;
+ const arr=allUnique(all()).filter(n=>(!q||(n.title+' '+n.summary+' '+n.category+' '+(n.originalTitle||'')).toLowerCase().includes(q))&&(!cat||n.category===cat)).sort((a,b)=>(Number(b.score)||0)-(Number(a.score)||0));
+ document.getElementById('num').textContent=arr.length;
+ document.getElementById('savedNum').textContent=saved.length;
+ document.getElementById('cards').innerHTML=arr.map(n=>{
+  const url=safeURL(n.url,'#'),unknownDate=/не указана|без даты/i.test(n.date||'');
+  const status=n.status||'Проверь первоисточник';
+  return '<article class="card"><div class="top"><span class="tag">'+e(n.category)+'</span><span class="score">ПОТЕНЦИАЛ '+e(n.score||'—')+'/100</span></div><h3>'+e(n.title)+'</h3><p>'+e(n.summary||'Открой первоисточник, чтобы проверить детали.')+'</p><div class="muted '+(unknownDate?'date-warning':'')+'">'+e(n.date||'Дата публикации не указана')+'</div><div class="status-line '+((unknownDate||/не удалось|не указана|проверь/i.test(status))?'warn':'')+'">'+e(status)+'</div><p><b>Почему может сработать:</b> '+e(n.why||'Проверь актуальность и реакцию аудитории.')+'</p><div class="muted">Источник: <a class="source" target="_blank" rel="noopener noreferrer" href="'+e(url)+'">'+e(n.source||'Открыть источник')+'</a></div><div class="actions"><button type="button" class="btn red" onclick="post(\''+e(n.id)+'\')">✍️ Создать пост</button><button type="button" class="btn" onclick="save(\''+e(n.id)+'\')">📌 В запас</button></div></article>';
+ }).join('')||'<div class="empty">Ничего не найдено. Измени запрос или категорию.</div>';
+ renderSaved();
+ document.getElementById('refreshStatus').textContent=refreshInProgress?'Проверяю доступные источники…':lastRefresh?'Последняя проверка: '+new Date(lastRefresh).toLocaleString('ru-RU')+' • автообновление раз в 15 минут':'Нажми «Обновить новости», чтобы загрузить свежие темы.';
+}
+function renderSaved(){document.getElementById('savedList').innerHTML=saved.length?saved.map((n,i)=>`<div class="saved"><b>${e(n.title)}</b><p>${e(n.hook||n.summary)}</p><div class="status-line">${e(n.date||'Дата не указана')} • ${e(n.source||'Сохранённая идея')}</div><button type="button" class="btn" onclick="editSaved(${i})">Открыть</button> <button type="button" class="btn" onclick="delSaved(${i})">Удалить</button></div>`).join(''):'<div class="empty">Пока нет сохранённых идей. Нажми «В запас» у темы.</div>'}
 function topStories(){document.getElementById('q').value='';document.getElementById('cat').value='';render();window.scrollTo({top:350,behavior:'smooth'})}
 function find(id){return all().find(n=>n.id===id)}
-function save(id){let n=find(id);if(n&&!saved.some(x=>x.title===n.title)){saved.unshift({...n});localStorage.setItem('fr_saved',JSON.stringify(saved));render()}else alert('Уже сохранено.')}
-function delSaved(i){saved.splice(i,1);localStorage.setItem('fr_saved',JSON.stringify(saved));render()}
+function save(id){let n=find(id);if(n&&!saved.some(x=>x.title===n.title)){saved.unshift({...n});saved=saved.slice(0,200);if(!storeJSON('fr_saved',saved)){alert('Не удалось сохранить: возможно, память браузера заполнена.');return}render()}else alert('Уже сохранено.')}
+function delSaved(i){saved.splice(i,1);storeJSON('fr_saved',saved);render()}
 function post(id){edit(find(id))}function editSaved(i){edit(saved[i])}
-function edit(n){window.item=n;document.getElementById('mt').textContent='Готовый комплект для TikTok';document.getElementById('mb').innerHTML=`<div class="field"><label>Заголовок на постер (по-русски)</label><input id="hook" value="${e(n.hook||n.title)}"></div><div class="field"><label>Краткое объяснение (проверь факты)</label><textarea id="summary">${e(n.summary)}</textarea></div><div class="field"><label>Готовое описание TikTok</label><textarea id="caption">${e(n.caption||n.summary||'')}</textarea></div><div class="field"><label>Хештеги</label><input id="tags" value="#FIGHTORA #UFC #MMA #НовостиUFC"></div><div class="notice">Автоперевод может ошибаться. Открой источник, проверь дату и факты. Не публикуй старую историю как свежую новость.</div><div class="actions"><button type="button" class="btn red" onclick="copyPack()">Копировать комплект</button><button type="button" class="btn" onclick="saveEdited()">Сохранить в запас</button></div>`;document.getElementById('modal').classList.add('open')}
+function edit(n){
+ if(!n){alert('Не удалось открыть эту тему. Обнови список новостей.');return}
+ window.item=n;
+ const sourceURL=safeURL(n.url,'');
+ const rawTitle=n.originalTitle||n.title||'Нет отдельного оригинального заголовка';
+ const date=n.date||'Дата публикации не указана';
+ document.getElementById('mt').textContent='Редактор поста FIGHTORA';
+ document.getElementById('mb').innerHTML=
+ '<div class="original-box"><b>ОРИГИНАЛ И ПРОВЕРКА</b><br>Заголовок источника: '+e(rawTitle)+'<br>Источник: '+(sourceURL?'<a href="'+e(sourceURL)+'" target="_blank" rel="noopener noreferrer">'+e(n.source||'Открыть оригинал')+'</a>':e(n.source||'Ссылка на источник не указана'))+'<br>Дата: '+e(date)+'<br><span class="status-line warn">'+e(n.status||'Перед публикацией сверь факты с оригиналом.')+'</span></div>'+
+ '<div class="field"><label for="hook">Заголовок на постер</label><input id="hook" maxlength="120" value="'+e(n.hook||n.title)+'"><div class="helper">Коротко, резко, без выдуманных цитат и неподтверждённых фактов.</div></div>'+
+ '<div class="field"><label for="summary">Краткое объяснение ситуации</label><textarea id="summary">'+e(n.summary||'')+'</textarea></div>'+
+ '<div class="field"><label for="caption">Описание TikTok</label><textarea id="caption">'+e(n.caption||n.summary||'')+'</textarea></div>'+
+ '<div class="field"><label for="tags">Хештеги</label><input id="tags" value="#FIGHTORA #UFC #MMA #НовостиUFC"></div>'+
+ '<div class="notice">Перед публикацией открой оригинал. Дата RSS может быть отсутствующей, перевод — неточным, а оценка потенциала — субъективной. Не выдавай слух за официальный факт.</div>'+
+ '<div class="actions"><button type="button" class="btn red" onclick="copyPack()">Копировать комплект</button><button type="button" class="btn" onclick="saveEdited()">Сохранить в запас</button></div>';
+ document.getElementById('modal').classList.add('open');
+}
 function copyText(t){if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(()=>alert('Скопировано')).catch(()=>fallback(t));else fallback(t)}
 function fallback(t){let x=document.createElement('textarea');x.value=t;document.body.appendChild(x);x.select();document.execCommand('copy');x.remove();alert('Скопировано')}
 function copyPack(){copyText(document.getElementById('hook').value+'\n\n'+document.getElementById('summary').value+'\n\n'+document.getElementById('caption').value+'\n\n'+document.getElementById('tags').value)}
-function saveEdited(){saved.unshift({id:Date.now(),title:document.getElementById('hook').value,hook:document.getElementById('hook').value,summary:document.getElementById('summary').value,caption:document.getElementById('caption').value,category:window.item.category});localStorage.setItem('fr_saved',JSON.stringify(saved));closeModal();render();alert('Сохранено локально')}
+function saveEdited(){
+ const n=window.item||{};
+ saved.unshift({id:'saved_'+Date.now(),title:document.getElementById('hook').value.trim(),hook:document.getElementById('hook').value.trim(),summary:document.getElementById('summary').value.trim(),caption:document.getElementById('caption').value.trim(),category:n.category||'Моя идея',originalTitle:n.originalTitle||n.title||'',source:n.source||'',url:safeURL(n.url,''),date:n.date||'Дата публикации не указана',status:n.status||'Сохранено из редактора',score:n.score||60});
+ saved=saved.slice(0,200);
+ if(!storeJSON('fr_saved',saved)){alert('Браузер не смог сохранить изменения. Освободи память сайта и попробуй ещё раз.');return}
+ closeModal();render();alert('Пост сохранён в запас на этом устройстве.');
+}
 function closeModal(){document.getElementById('modal').classList.remove('open')}
 function addOpen(){document.getElementById('mt').textContent='Добавить новость';document.getElementById('mb').innerHTML=`<div class="field"><label>Заголовок</label><input id="nt"></div><div class="field"><label>Подтверждённые факты</label><textarea id="ns"></textarea></div><div class="field"><label>Ссылка на источник</label><input id="nu" placeholder="https://..."></div><div class="field"><label>Источник</label><input id="nsource"></div><div class="field"><label>Категория</label><select id="nc"><option>Заявление бойца</option><option>Конфликт / реванш</option><option>Спорное мнение</option><option>Предстоящий турнир</option><option>Деньги / UFC</option><option>Закулисье UFC</option><option>Моя идея</option></select></div><div class="field"><label>Хук</label><input id="nh"></div><button type="button" class="btn red" onclick="addNews()">Добавить</button>`;document.getElementById('modal').classList.add('open')}
-function addNews(){let title=document.getElementById('nt').value.trim(),summary=document.getElementById('ns').value.trim();if(!title||!summary){alert('Нужны заголовок и факты');return}custom.unshift({id:Date.now(),title,summary,url:document.getElementById('nu').value||'#',source:document.getElementById('nsource').value||'Добавлено вручную',category:document.getElementById('nc').value,hook:document.getElementById('nh').value||title,caption:summary,date:new Date().toLocaleDateString('ru-RU'),score:60,status:'Проверить источник',why:'Добавлено вручную. Проверь факты перед публикацией.'});localStorage.setItem('fr_custom',JSON.stringify(custom));closeModal();render()}
+function addNews(){
+ let title=document.getElementById('nt').value.trim(),summary=document.getElementById('ns').value.trim(),url=document.getElementById('nu').value.trim();
+ if(!title||!summary){alert('Нужны заголовок и подтверждённые факты');return}
+ if(url&&!/^https?:\/\//i.test(url)){alert('Ссылка должна начинаться с https:// или http://');return}
+ const row={id:'custom_'+Date.now(),title,summary,url:safeURL(url,'#'),source:document.getElementById('nsource').value.trim()||'Добавлено вручную',category:document.getElementById('nc').value,hook:document.getElementById('nh').value.trim()||title,caption:summary+'\\n\\nЧто думаете? Пишите мнение в комментариях.\\n\\n#FIGHTORA #UFC #MMA',date:'Добавлено '+new Date().toLocaleDateString('ru-RU'),score:60,status:'Добавлено вручную • дата события и факты требуют проверки',why:'Пользовательская тема. Проверь первоисточник и контекст перед публикацией.'};
+ custom.unshift(row);custom=custom.slice(0,200);
+ if(!storeJSON('fr_custom',custom)){alert('Не удалось сохранить идею в браузере. Освободи память сайта и попробуй ещё раз.');return}
+ closeModal();render();
+}
 function exportJSON(){let b=new Blob([JSON.stringify({saved,custom,live,lastRefresh,exportedAt:new Date().toISOString()},null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='FIGHTORA_RADAR_backup.json';a.click();URL.revokeObjectURL(a.href)}
 async function readFeed(feed){
  // Try RSS2JSON first, then direct XML through public CORS relays.
@@ -54,36 +124,79 @@ async function readFeed(feed){
 }
 function parseXML(raw){const doc=new DOMParser().parseFromString(raw,'text/xml');if(doc.querySelector('parsererror'))throw Error('Некорректный XML');let nodes=[...doc.querySelectorAll('item')];if(!nodes.length)nodes=[...doc.querySelectorAll('entry')];return nodes.map(n=>({title:n.querySelector('title')?.textContent||'',description:n.querySelector('description')?.textContent||n.querySelector('summary')?.textContent||n.querySelector('content')?.textContent||'',link:n.querySelector('link')?.getAttribute('href')||n.querySelector('link')?.textContent||'',pubDate:n.querySelector('pubDate')?.textContent||n.querySelector('published')?.textContent||n.querySelector('updated')?.textContent||'',author:n.querySelector('author name')?.textContent||n.querySelector('author')?.textContent||''}))}
 async function translateToRussian(text){
- text=String(text||'').trim(); if(!text) return text;
- // Try public Google Translate endpoint; if unavailable, retain source text transparently.
- try{const u='https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=ru&dt=t&q='+encodeURIComponent(text.slice(0,900));const r=await fetch(u);if(!r.ok)throw Error('translate');const d=await r.json();const out=(d[0]||[]).map(x=>x&&x[0]||'').join('').trim();return out||text;}catch(_){return text;}
+ text=String(text||'').trim();if(!text)return {text:'',ok:true,method:'пустой текст'};
+ const source=text.slice(0,900);
+ try{
+  const u='https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=ru&dt=t&q='+encodeURIComponent(source);
+  const r=await fetch(u,{signal:AbortSignal.timeout(7000)});if(!r.ok)throw Error('Google Translate HTTP '+r.status);
+  const d=await r.json(),out=(d[0]||[]).map(x=>x&&x[0]||'').join('').trim();
+  if(out&&((out.toLowerCase()!==source.toLowerCase())||/[А-Яа-яЁё]/.test(source)))return {text:out,ok:true,method:'Google Translate'};
+ }catch(_){}
+ try{
+  const short=source.slice(0,480);
+  const u='https://api.mymemory.translated.net/get?q='+encodeURIComponent(short)+'&langpair=autodetect|ru';
+  const r=await fetch(u,{signal:AbortSignal.timeout(7000)});if(!r.ok)throw Error('MyMemory HTTP '+r.status);
+  const d=await r.json(),out=String(d?.responseData?.translatedText||'').trim();
+  if(out&&out.toLowerCase()!==short.toLowerCase())return {text:out,ok:true,method:'MyMemory'};
+ }catch(_){}
+ return {text:source,ok:/[А-Яа-яЁё]/.test(source),method:'перевод не подтверждён'};
 }
 function postCaption(title,summary){return `${title}.\n\nЧто думаете об этой ситуации? Пишите мнение в комментариях.\n\n#FIGHTORA #UFC #MMA #НовостиUFC`;}
 async function refreshNews(showAlert=false){
- const status=document.getElementById('refreshStatus');status.textContent='Проверяю несколько способов загрузки новостей…';
- let fresh=[],ok=0,errors=[];
- for(const feed of feeds){
-  try{
-   const items=await readFeed(feed);ok++;
-   for(const item of items.slice(0,18)){
-    let title=(item.title||'').replace(/<[^>]*>/g,'').trim();if(!title)continue;
-    let desc=(item.description||'').replace(/<[^>]*>/g,' ').replace(/&nbsp;/g,' ').replace(/\s+/g,' ').trim().slice(0,450);
-    const originalTitle=title; title=await translateToRussian(title); if(desc)desc=await translateToRussian(desc);
-    const pub=item.pubDate?new Date(item.pubDate):new Date();
-    if(!Number.isNaN(pub.getTime())&&(Date.now()-pub.getTime()>7*86400000))continue;
-    const url=(item.link||feed.url).trim();
-    fresh.push({id:'live_'+btoa(unescape(encodeURIComponent((url||title).slice(0,180)))).replace(/[^a-zA-Z0-9]/g,'').slice(0,24),title,summary:desc||'Открой источник, чтобы проверить детали и полный контекст.',category:categoryFor(title+' '+desc),date:pub.toLocaleString('ru-RU',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'}),score:scoreItem(title,desc),status:'Переведено автоматически • сверь перевод с источником',why:'Это заголовок из RSS, автоматически переведённый на русский. Открой первоисточник и проверь, что перевод точно передаёт смысл.',hook:makeHook(title),caption:postCaption(title,desc),originalTitle,source:item.author||feed.name,url});
+ if(refreshInProgress)return;
+ refreshInProgress=true;
+ const status=document.getElementById('refreshStatus');
+ status.textContent='Проверяю RSS-ленты и резервные способы загрузки…';
+ const results=await Promise.allSettled(feeds.map(async feed=>({feed,items:await readFeed(feed)})));
+ let entries=[],ok=0,errors=[];
+ results.forEach((r)=>{if(r.status==='fulfilled'){ok++;entries.push({feed:r.value.feed,items:r.value.items})}else errors.push(String(r.reason||'Ошибка источника'))});
+ let fresh=[];
+ for(const group of entries){
+  const feed=group.feed;
+  for(const item of group.items.slice(0,6)){
+   const originalTitle=cleanText(item.title);if(!originalTitle)continue;
+   const originalDesc=cleanText(item.description||item.content||'').slice(0,320);
+   const rawDate=String(item.pubDate||item.published||item.updated||item.date||'').trim();
+   const parsedDate=rawDate?new Date(rawDate):null;
+   const validDate=!!parsedDate&&!Number.isNaN(parsedDate.getTime())&&parsedDate.getTime()>0;
+   if(validDate&&Date.now()-parsedDate.getTime()>7*86400000)continue;
+   if(validDate&&parsedDate.getTime()>Date.now()+2*86400000)continue;
+   let title=originalTitle,desc=originalDesc,translationOK=true,translationMethod='не требовался';
+   const titleTr=await translateToRussian(originalTitle);
+   title=titleTr.text;
+   translationOK=titleTr.ok;
+   translationMethod=titleTr.method;
+   if(originalDesc){
+    const descTr=await translateToRussian(originalDesc.slice(0,430));
+    desc=descTr.text;
+    translationOK=translationOK&&descTr.ok;
+    if(descTr.method!==translationMethod)translationMethod=translationMethod+' + '+descTr.method;
    }
-  }catch(err){errors.push(feed.name)}
+   const url=safeURL(item.link,feed.url);
+   const category=categoryFor(originalTitle+' '+originalDesc+' '+title);
+   const date=validDate?parsedDate.toLocaleString('ru-RU',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'}):'Дата публикации не указана';
+   let score=scoreItem(originalTitle,originalDesc);
+   if(!validDate)score=Math.max(40,score-7);
+   if(!translationOK)score=Math.max(40,score-3);
+   const flags=[validDate?'Дата RSS получена':'Дата публикации не указана — проверь источник',translationOK?'Перевод: '+translationMethod:'Перевод не подтверждён — заголовок может остаться на языке оригинала'];
+   fresh.push({id:'live_'+btoa(unescape(encodeURIComponent((url||originalTitle).slice(0,180)))).replace(/[^a-zA-Z0-9]/g,'').slice(0,24),title,summary:desc||'Краткое описание отсутствует. Открой оригинал и проверь детали.',category,date,score,status:flags.join(' • '),why:'Автоматическая подборка по RSS. Оценка редакционного потенциала субъективна; проверь оригинальную публикацию.',hook:makeHook(title),caption:postCaption(title,desc||'Проверь подробности в первоисточнике'),originalTitle,originalSummary:originalDesc,translationOK,translationMethod,source:item.author||feed.name,url,sortDate:validDate?parsedDate.toISOString():''});
+  }
  }
+ refreshInProgress=false;
  if(fresh.length){
-  const old=new Map(live.map(n=>[n.url,n]));for(const n of fresh)old.set(n.url,n);
-  live=Array.from(old.values()).slice(-100);localStorage.setItem('fr_live',JSON.stringify(live));lastRefresh=new Date().toISOString();localStorage.setItem('fr_last_refresh',lastRefresh);render();
-  status.textContent=`Обновлено: ${fresh.length} новостных записей • источников ответило: ${ok}/${feeds.length} • ${new Date().toLocaleTimeString('ru-RU')}`;
-  if(showAlert)alert(`Получено ${fresh.length} новостных записей. Источников ответило: ${ok}/${feeds.length}. Проверь первоисточники перед публикацией.`);
+  const old=new Map(live.map(n=>[n.url||n.id,n]));
+  fresh.forEach(n=>old.set(n.url||n.id,n));
+  live=Array.from(old.values()).slice(-100);
+  storeJSON('fr_live',live);
+  lastRefresh=new Date().toISOString();
+  try{localStorage.setItem('fr_last_refresh',lastRefresh)}catch(_){}
+  render();
+  status.textContent='Обновлено: '+fresh.length+' записей • источников ответило: '+ok+'/'+feeds.length+' • '+new Date().toLocaleTimeString('ru-RU');
+  if(showAlert)alert('Загружено '+fresh.length+' записей; ответило источников: '+ok+'/'+feeds.length+'. Новости без даты и неполный перевод помечены. Проверь оригиналы перед публикацией.');
  }else{
-  render();status.textContent='RSS временно недоступен. Ниже показаны резервные идеи; свежие новости появятся, когда источник/сеть ответит.';
-  if(showAlert)alert('Не удалось получить свежие RSS-ленты даже через резервные способы. Резервные идеи остаются доступны — это темы для проверки, не свежие новости.');
+  render();
+  status.textContent='Свежие RSS-данные не получены ('+ok+'/'+feeds.length+' источников). Резервные идеи — не новости.';
+  if(showAlert)alert('Сейчас не получилось получить свежие RSS-ленты. Резервные темы не выдаются за новости. Попробуй ещё раз чуть позже.');
  }
 }
 render();
