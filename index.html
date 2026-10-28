@@ -69,6 +69,17 @@ header{background:rgba(9,10,15,.88);border-bottom-color:#3a2028;box-shadow:0 8px
 .studio-actions .btn{font-size:13px;line-height:1.25}
 #downloadPosterBtn{letter-spacing:.2px}
 @media(max-width:380px){.poster-canvas-preview{padding:5%}.poster-studio-headline{font-size:23px}.poster-studio-summary{font-size:11px}}
+
+/* FIGHTORA POSTER STUDIO — art direction */
+.poster-canvas-preview{background:radial-gradient(ellipse at 82% 24%,#822331 0,transparent 36%),linear-gradient(145deg,#211017 0%,#08090e 58%,#2a0d14 100%)}
+.poster-canvas-preview>.poster-studio-art{position:absolute;right:-4%;bottom:3%;width:82%;height:75%;z-index:0;opacity:.78;pointer-events:none}
+.poster-canvas-preview.has-photo>.poster-studio-art{opacity:.08}
+.poster-canvas-preview>div{position:relative;z-index:1}
+.poster-studio-headline{display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden;font-size:clamp(23px,6.3vw,45px);line-height:1;letter-spacing:-.04em}
+.poster-studio-summary{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;overflow-wrap:anywhere}
+.poster-studio-footer{flex-shrink:0}
+.studio-actions .btn{font-size:13px;line-height:1.25}
+@media(max-width:380px){.poster-canvas-preview{padding:5%}.poster-studio-headline{font-size:22px}.poster-studio-summary{font-size:11px}}
 </style></head><body><header><div class="wrap"><div class="brand">FIGHTORA <b>RADAR</b></div><div class="sub">FIND THE STORY. OWN THE FEED.</div></div></header><main>
 <div class="hero"><h1>Не просто новости.<br><span>Поводы для сильных постов.</span></h1><p>Свежие темы MMA, оценка редакционного потенциала и заготовки для TikTok в стиле FIGHTORA.</p><div class="actions"><button type="button" class="btn red" onclick="topStories()">🔥 Топ темы</button><button type="button" class="btn" onclick="addOpen()">＋ Добавить новость</button><button type="button" class="btn" onclick="exportJSON()">Экспорт идей</button></div></div>
 <div class="metrics"><div class="metric"><strong id="num">6</strong><span class="muted">тем в подборке</span></div><div class="metric"><strong id="savedNum">0</strong><span class="muted">идей в запасе</span></div><div class="metric"><strong>FIGHTORA</strong><span class="muted">редакционный радар</span></div></div>
@@ -79,7 +90,7 @@ header{background:rgba(9,10,15,.88);border-bottom-color:#3a2028;box-shadow:0 8px
 <footer class="muted" style="text-align:center;padding:22px">FIGHTORA RADAR • Данные сохранённых идей хранятся в браузере • Неофициальный проект</footer></main>
 <div class="modal" id="modal" onclick="if(event.target===this)closeModal()"><div class="sheet"><div class="sheethead"><h2 id="mt">Заготовка для TikTok</h2><button class="x" onclick="closeModal()">×</button></div><div id="mb"></div></div></div>
 <script>
-const seed=[{"id":"fallback1","title":"Кто заслуживает следующий титульный бой?","summary":"Резервная тема: выбери актуального претендента и проверь последние результаты, рейтинг и заявления UFC перед публикацией.","category":"Спорное мнение","date":"Резервная идея • проверь актуальность","score":78,"status":"Резервная тема — не свежая новость","why":"Провоцирует аргументированный спор, если подкрепить актуальными фактами.","hook":"КТО ДЕЙСТВИТЕЛЬНО ЗАСЛУЖИЛ ТИТУЛЬНЫЙ БОЙ?","caption":"Кто, по-вашему, заслужил следующий титульный шанс? Обоснуйте мнение. #FIGHTORA #UFC #MMA","source":"UFC News","url":"https://www.ufc.com/news"},{"id":"fallback2","title":"Деньги в UFC: сколько получают бойцы?","summary":"Резервная тема: сравни только подтверждённые выплаты из надёжных источников и чётко отличай официальные данные от оценок.","category":"Деньги / UFC","date":"Резервная идея • проверь актуальность","score":82,"status":"Резервная тема — не свежая новость","why":"Финансовые темы вызывают интерес, особенно когда цифры подтверждены.","hook":"СКОЛЬКО НА САМОМ ДЕЛЕ ЗАРАБАТЫВАЮТ БОЙЦЫ UFC?","caption":"Выплаты бойцов всегда вызывают споры. Какие цифры стоит раскрывать в следующем разборе? #FIGHTORA #UFC #MMA","source":"MMA Fighting","url":"https://www.mmafighting.com/"},{"id":"fallback3","title":"Реванш, которого больше всего ждут фанаты","summary":"Резервная тема: найди свежие подтверждённые комментарии или официальное объявление о потенциальном реванше. Не выдавай слухи за факт.","category":"Конфликт / реванш","date":"Резервная идея • проверь актуальность","score":80,"status":"Резервная тема — не свежая новость","why":"Понятный конфликт и вопрос аудитории могут дать сильную дискуссию.","hook":"ЭТОТ РЕВАНШ НУЖЕН UFC?","caption":"Какой реванш вы действительно хотите увидеть — и почему? #FIGHTORA #UFC #MMA","source":"Sherdog News","url":"https://www.sherdog.com/news/news/list/1"},{"id":"fallback4","title":"Самое спорное решение судей: разбор по раундам","summary":"Резервная тема: выбери бой, проверь официальные карточки судей, затем сравни их с критериями судейства. Не называй ограблением без разбора.","category":"Спорное мнение","date":"Резервная идея • проверь актуальность","score":76,"status":"Резервная тема — не свежая новость","why":"Разбор конкретных раундов стимулирует обсуждение, если он честный и аргументированный.","hook":"СПОРНОЕ РЕШЕНИЕ? РАЗБИРАЕМ ПО РАУНДАМ","caption":"Как вы оценили бы этот бой? Обсуждаем по раундам, без оскорблений. #FIGHTORA #UFC #MMA","source":"UFC News","url":"https://www.ufc.com/news"},{"id":"fallback5","title":"Кто из проспектов готов к топ-15?","summary":"Резервная тема: проверь актуальный рейтинг, последние соперники и результаты перспективного бойца перед выбором кандидата.","category":"Заявление бойца","date":"Резервная идея • проверь актуальность","score":72,"status":"Резервная тема — не свежая новость","why":"Аудитории нравится спорить о будущих звёздах и следующем шаге карьеры.","hook":"ЭТО БУДУЩАЯ ЗВЕЗДА UFC?","caption":"Кого из перспективных бойцов пора проверить боем с топ-15? #FIGHTORA #UFC #MMA","source":"UFC News","url":"https://www.ufc.com/news"},{"id":"fallback6","title":"Что изменилось в дивизионе после последнего турнира?","summary":"Резервная тема: проверь последние результаты и обновлённые рейтинги, прежде чем делать выводы о претендентах.","category":"Предстоящий турнир","date":"Резервная идея • проверь актуальность","score":70,"status":"Резервная тема — не свежая новость","why":"Помогает объяснить последствия турнира и возможные следующие бои.","hook":"КАК ТЕПЕРЬ ВЫГЛЯДИТ ДИВИЗИОН?","caption":"Кого теперь нужно ставить следующим в очереди? #FIGHTORA #UFC #MMA","source":"UFC Rankings","url":"https://www.ufc.com/rankings"}];
+const seed=[{"id":"fallback1","title":"Кто ближе всех к титульному бою?","summary":"Титульная очередь — это не только громкие вызовы. Важны серия побед, уровень соперников и то, насколько претендент опасен чемпиону стилистически.","category":"Спорное мнение","date":"Идея для поста • не свежая новость","score":78,"status":"Редакционная идея — не новость","why":"Подходит для аргументированного сравнения претендентов после проверки актуальных рейтингов и результатов.","hook":"КТО БЛИЖЕ ВСЕХ К ТИТУЛЬНОМУ БОЮ?","caption":"Титульный шанс нужно заслужить. Кого вы поставили бы следующим и почему? #FIGHTORA #UFC #MMA","source":"UFC News","url":"https://www.ufc.com/news"},{"id":"fallback2","title":"Сколько на самом деле зарабатывают бойцы UFC?","summary":"Гонорары, бонусы и спонсорские деньги часто смешивают в одну цифру. В разборе FIGHTORA отделяем подтверждённые выплаты от оценок и слухов.","category":"Деньги / UFC","date":"Идея для поста • не свежая новость","score":82,"status":"Редакционная идея — не новость","why":"Денежные темы цепляют, когда каждая цифра имеет понятный источник и не выдаётся за официальную выплату без подтверждения.","hook":"СКОЛЬКО НА САМОМ ДЕЛЕ ЗАРАБАТЫВАЮТ БОЙЦЫ UFC?","caption":"Выплаты часто обсуждают без контекста. Какие цифры стоит разобрать в следующем выпуске? #FIGHTORA #UFC #MMA","source":"MMA Fighting","url":"https://www.mmafighting.com/"},{"id":"fallback3","title":"Этот реванш действительно нужен?","summary":"Реванш интересен не одним названием. Важны результат первой встречи, то, что изменилось после боя, и спортивный смысл повторного поединка.","category":"Конфликт / реванш","date":"Идея для поста • не свежая новость","score":80,"status":"Редакционная идея — не новость","why":"Формат работает, когда обсуждаются конкретные аргументы, а не выдаётся слух о переговорах за подтверждённый бой.","hook":"ЭТОТ РЕВАНШ ДЕЙСТВИТЕЛЬНО НУЖЕН?","caption":"Какой реванш имеет настоящий спортивный смысл? Назовите пару и аргументируйте. #FIGHTORA #UFC #MMA","source":"Sherdog News","url":"https://www.sherdog.com/news/news/list/1"},{"id":"fallback4","title":"Судейское решение: разбор по раундам","summary":"Спорный бой нельзя оценить одним словом. Ключевые эпизоды и критерии судейства важнее эмоций после финального гонга.","category":"Спорное мнение","date":"Идея для поста • не свежая новость","score":76,"status":"Редакционная идея — не новость","why":"Разбор карточек и отдельных раундов даёт содержательный спор, если сначала проверить официальные оценки судей.","hook":"СУДЕЙСКОЕ РЕШЕНИЕ: РАЗБОР ПО РАУНДАМ","caption":"Разбираем бой по эпизодам, а не по эмоциям. Как вы оценили бы раунды? #FIGHTORA #UFC #MMA","source":"UFC News","url":"https://www.ufc.com/news"},{"id":"fallback5","title":"Кто готов к бою с топ-15?","summary":"Рекорд — не единственный показатель готовности. Сравните уровень последних соперников, защиту, темп и работу бойца под давлением.","category":"Заявление бойца","date":"Идея для поста • не свежая новость","score":72,"status":"Редакционная идея — не новость","why":"Помогает найти перспективного бойца для обсуждения после проверки свежих результатов и рейтинга.","hook":"КТО УЖЕ ГОТОВ К БОЮ С ТОП-15?","caption":"Кого пора проверить против соперника из топ-15? Нужны имя и аргументы. #FIGHTORA #UFC #MMA","source":"UFC Rankings","url":"https://www.ufc.com/rankings"},{"id":"fallback6","title":"Как теперь выглядит титульная гонка в дивизионе?","summary":"После большого боя очередь претендентов может измениться. Сравните результаты, актуальные рейтинги и возможные следующие шаги — без выдуманных назначений.","category":"Спорное мнение","date":"Идея для поста • не свежая новость","score":70,"status":"Редакционная идея — не новость","why":"Это формат для короткого аналитического поста после проверки последних результатов и официального рейтинга.","hook":"КТО ТЕПЕРЬ ВПЕРЕДИ В ТИТУЛЬНОЙ ГОНКЕ?","caption":"Кто следующий в очереди за титулом? Обсуждаем только подтверждённые результаты и актуальные рейтинги. #FIGHTORA #UFC #MMA","source":"UFC Rankings","url":"https://www.ufc.com/rankings"}];
 function loadJSON(key,fallback){try{const v=JSON.parse(localStorage.getItem(key)||'null');return v==null?fallback:v}catch(_){return fallback}}
 function storeJSON(key,value){try{localStorage.setItem(key,JSON.stringify(value));return true}catch(_){return false}}
 let live=loadJSON('fr_live_v2',[]);
@@ -93,7 +104,7 @@ const feeds=[
  {name:'Google News: UFC MMA',url:'https://news.google.com/rss/search?q=UFC+MMA+when:7d&hl=en-US&gl=US&ceid=US:en'},
  {name:'Google News: MMA fighters',url:'https://news.google.com/rss/search?q=MMA+fighter+when:7d&hl=en-US&gl=US&ceid=US:en'}
 ];
-function all(){return [...custom,...live,...seed]}
+function all(){return [...custom,...live,...(live.length?[]:seed)]}
 function safeURL(value,fallback='#'){try{const u=new URL(String(value||''),location.href);return ['https:','http:'].includes(u.protocol)?u.href:fallback}catch(_){return fallback}}
 function cleanText(value){
  let current=String(value||'').trim();
@@ -138,7 +149,7 @@ function edit(n){
  const summary=n.posterSummary||n.summary||'Подробности — в первоисточнике.';
  document.getElementById('mt').textContent='Студия поста FIGHTORA';
  let html='<div class="original-box"><b>ПЕРВОИСТОЧНИК И ПРОВЕРКА</b><br>Оригинальный заголовок: '+e(originalTitle)+'<br>Источник: '+(sourceURL?'<a href="'+e(sourceURL)+'" target="_blank" rel="noopener noreferrer">'+e(n.source||'Открыть источник')+'</a>':e(n.source||'Ссылка не указана'))+'<br>Дата: '+e(n.date||'Дата публикации не указана')+'<br><span class="status-line warn">'+e(n.status||'Перед публикацией сверь факты с оригиналом.')+'</span></div>';
- html+='<div class="studio-wrap"><div><div class="studio-kicker">Предпросмотр постера • квадрат 1080 × 1080</div><div class="poster-canvas-preview" id="posterPreview"><div><div class="poster-studio-brand">FIGHTORA <span>RADAR</span></div><span class="poster-studio-category">'+e((n.category||'MMA').toUpperCase())+'</span></div><div><div class="poster-studio-headline" id="posterHeadline">'+e(hook)+'</div><div class="poster-studio-rule"></div><div class="poster-studio-summary" id="posterSummary">'+e(summary)+'</div></div><div class="poster-studio-footer"><div><div class="poster-studio-brand" style="font-size:clamp(11px,3vw,16px)">FIGHTORA <span>INSIDE</span></div><small>НОВОСТИ • UFC • MMA</small></div><span class="poster-studio-cta">ПОДПИШИСЬ</span></div></div></div>';
+ html+='<div class="studio-wrap"><div><div class="studio-kicker">Предпросмотр постера • квадрат 1080 × 1080</div><div class="poster-canvas-preview" id="posterPreview"><svg class="poster-studio-art" viewBox="0 0 500 500" aria-hidden="true"><defs><linearGradient id="fighterRed" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f12b3c" stop-opacity=".78"/><stop offset="1" stop-color="#300812" stop-opacity=".16"/></linearGradient></defs><polygon points="165,55 325,55 420,145 420,320 325,410 165,410 70,320 70,145" fill="none" stroke="#ff3447" stroke-opacity=".42" stroke-width="3"/><polygon points="185,90 305,90 385,165 385,300 305,375 185,375 105,300 105,165" fill="none" stroke="#fff" stroke-opacity=".1" stroke-width="2"/><g fill="#08090e" stroke="#ff3447" stroke-opacity=".52" stroke-width="3" stroke-linejoin="round"><circle cx="205" cy="150" r="31"/><path d="M179 185 Q145 194 134 233 L145 284 166 320 251 320 267 266 Q273 222 231 188 L220 178Z"/><path d="M163 207 Q130 219 111 254 L143 277 177 240Z"/><path d="M237 207 Q276 205 296 180 L320 199 284 240 253 249Z"/><path d="M177 312 L165 374 148 414 181 420 215 365 224 320Z"/><path d="M223 314 L243 370 270 404 301 388 269 335 254 311Z"/><circle cx="329" cy="182" r="28" fill="url(#fighterRed)"/><path d="M303 214 Q272 220 271 252 L283 298 336 318 367 278 363 236 350 214Z" fill="#120a10"/><path d="M302 229 L269 262 285 282 321 255Z"/><path d="M354 232 L386 251 370 273 342 255Z"/><path d="M300 302 L292 354 314 385 335 377 329 318Z"/><path d="M338 310 L363 351 390 369 406 350 374 314Z"/></g></svg><div><div class="poster-studio-brand">FIGHTORA <span>RADAR</span></div><span class="poster-studio-category">'+e((n.category||'MMA').toUpperCase())+'</span></div><div><div class="poster-studio-headline" id="posterHeadline">'+e(hook)+'</div><div class="poster-studio-rule"></div><div class="poster-studio-summary" id="posterSummary">'+e(summary)+'</div></div><div class="poster-studio-footer"><div><div class="poster-studio-brand" style="font-size:clamp(11px,3vw,16px)">FIGHTORA <span>INSIDE</span></div><small>НОВОСТИ • UFC • MMA</small></div><span class="poster-studio-cta">ПОДПИШИСЬ</span></div></div></div>';
  html+='<div><div class="field"><label for="hook">Главный заголовок постера</label><textarea id="hook" maxlength="180" oninput="updatePosterPreview()">'+e(hook)+'</textarea><div class="studio-help">Цепляющий заголовок без придуманных цитат и неподтверждённых заявлений.</div></div>';
  html+='<div class="field"><label for="summary">Краткое объяснение для постера</label><textarea id="summary" maxlength="260" oninput="updatePosterPreview()">'+e(summary)+'</textarea></div>';
  html+='<div class="field"><label for="caption">Описание TikTok</label><textarea id="caption">'+e(n.caption||n.summary||'')+'</textarea></div>';
@@ -149,6 +160,9 @@ function edit(n){
  document.getElementById('mb').innerHTML=html;
  document.getElementById('modal').classList.add('open');
  updatePosterPreview();
+ const preview=document.getElementById('posterPreview');
+ const imageURL=safeURL(n.imageURL,'');
+ if(preview&&imageURL){preview.classList.add('has-photo');preview.style.backgroundImage='linear-gradient(140deg,rgba(5,6,10,.28),rgba(5,6,10,.82)),url('+JSON.stringify(imageURL)+')';preview.style.backgroundSize='cover';preview.style.backgroundPosition='center';}
 }
 function updatePosterPreview(){
  const h=document.getElementById('hook'),s=document.getElementById('summary');
@@ -214,7 +228,32 @@ function loadPosterPhoto(url){
   setTimeout(function(){resolve(null)},3500);
  });
 }
+function drawEditorialFightArt(ctx){
+ const glow=ctx.createRadialGradient(780,690,20,780,690,380);glow.addColorStop(0,'rgba(209,24,47,.34)');glow.addColorStop(1,'rgba(209,24,47,0)');ctx.fillStyle=glow;ctx.fillRect(380,390,700,540);
+ ctx.save();ctx.globalAlpha=.72;ctx.strokeStyle='rgba(244,45,65,.35)';ctx.lineWidth=3;
+ const oct=[[505,700],[600,535],[820,500],[980,610],[1005,780],[850,895],[625,875],[500,775]];
+ ctx.beginPath();ctx.moveTo(oct[0][0],oct[0][1]);for(let i=1;i<oct.length;i++)ctx.lineTo(oct[i][0],oct[i][1]);ctx.closePath();ctx.stroke();
+ ctx.strokeStyle='rgba(255,255,255,.10)';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(570,590);ctx.lineTo(920,850);ctx.moveTo(560,840);ctx.lineTo(915,555);ctx.stroke();ctx.restore();
+ function fighter(cx,headY,scale,flip,accent){
+  ctx.save();ctx.translate(cx,headY);ctx.scale(scale*flip,scale);ctx.lineCap='round';ctx.lineJoin='round';
+  ctx.strokeStyle='#08090e';ctx.lineWidth=38;
+  ctx.beginPath();ctx.moveTo(-31,58);ctx.lineTo(-70,83);ctx.lineTo(-52,114);ctx.stroke();
+  ctx.beginPath();ctx.moveTo(31,58);ctx.lineTo(71,34);ctx.lineTo(88,45);ctx.stroke();
+  ctx.beginPath();ctx.moveTo(-24,151);ctx.lineTo(-39,210);ctx.lineTo(-59,255);ctx.stroke();
+  ctx.beginPath();ctx.moveTo(23,151);ctx.lineTo(42,209);ctx.lineTo(62,244);ctx.stroke();
+  ctx.fillStyle='#08090e';ctx.strokeStyle=accent;ctx.lineWidth=4;
+  ctx.beginPath();ctx.arc(0,0,35,0,Math.PI*2);ctx.fill();ctx.stroke();
+  ctx.beginPath();ctx.moveTo(-28,37);ctx.quadraticCurveTo(-58,45,-62,81);ctx.lineTo(-51,143);ctx.lineTo(-39,163);ctx.lineTo(39,163);ctx.lineTo(56,110);ctx.quadraticCurveTo(56,55,28,38);ctx.closePath();ctx.fill();ctx.stroke();
+  ctx.fillStyle='#13090e';ctx.strokeStyle=accent;ctx.lineWidth=3;
+  ctx.beginPath();ctx.arc(-52,119,24,0,Math.PI*2);ctx.fill();ctx.stroke();
+  ctx.beginPath();ctx.arc(98,47,24,0,Math.PI*2);ctx.fill();ctx.stroke();
+  ctx.restore();
+ }
+ fighter(720,540,1.18,1,'rgba(255,67,85,.65)');
+ fighter(936,575,.91,-1,'rgba(255,67,85,.48)');
+}
 async function downloadPoster(){
+
  const button=document.getElementById('downloadPosterBtn');
  if(button){button.disabled=true;button.textContent='ГОТОВЛЮ ПОСТЕР…'}
  try{
@@ -229,10 +268,16 @@ async function downloadPoster(){
   ctx.strokeStyle='rgba(255,255,255,.035)';ctx.lineWidth=1;for(let gx=70;gx<1080;gx+=40){ctx.beginPath();ctx.moveTo(gx,210);ctx.lineTo(gx,900);ctx.stroke()}
   ctx.fillStyle='#ed2333';ctx.fillRect(0,0,1080,12);ctx.fillStyle='#87202c';ctx.fillRect(0,12,1080,3);
   const photo=await loadPosterPhoto(safeURL(n.imageURL,''));
-  if(photo){const scale=Math.max(1080/photo.width,760/photo.height),w=photo.width*scale,h=photo.height*scale;ctx.save();ctx.globalAlpha=.32;ctx.drawImage(photo,(1080-w)/2,(650-h)/2,w,h);ctx.restore();const shade=ctx.createLinearGradient(0,180,0,900);shade.addColorStop(0,'rgba(5,6,10,.48)');shade.addColorStop(.55,'rgba(5,6,10,.68)');shade.addColorStop(1,'rgba(5,6,10,.98)');ctx.fillStyle=shade;ctx.fillRect(0,180,1080,720)}
+  if(photo){
+   const scale=Math.max(1080/photo.width,1080/photo.height),w=photo.width*scale,h=photo.height*scale;
+   ctx.save();ctx.globalAlpha=.48;ctx.drawImage(photo,(1080-w)/2,(1080-h)/2,w,h);ctx.restore();
+   const photoShade=ctx.createLinearGradient(0,0,0,1080);photoShade.addColorStop(0,'rgba(5,6,10,.60)');photoShade.addColorStop(.48,'rgba(5,6,10,.70)');photoShade.addColorStop(1,'rgba(5,6,10,.97)');ctx.fillStyle=photoShade;ctx.fillRect(0,0,1080,1080);
+  }else{
+   drawEditorialFightArt(ctx);
+  }
   ctx.fillStyle='#fff';ctx.font='900 46px Arial,sans-serif';ctx.textAlign='left';ctx.fillText('FIGHTORA',68,100);
   const brandWidth=ctx.measureText('FIGHTORA ').width;ctx.fillStyle='#ff3348';ctx.fillText('RADAR',68+brandWidth,100);
-  ctx.fillStyle='#a7a9b4';ctx.font='bold 17px Arial,sans-serif';ctx.textAlign='right';ctx.fillText('MMA NEWS NETWORK',1010,97);ctx.textAlign='left';
+  ctx.fillStyle='#a7a9b4';ctx.font='bold 17px Arial,sans-serif';ctx.textAlign='right';ctx.fillText(/Резервная тема|Редакционная идея/.test(String(n.status||''))?'ИДЕЯ • НЕ НОВОСТЬ':'UFC • MMA',1010,97);ctx.textAlign='left';
   const category=String(n.category||'MMA').toUpperCase();ctx.fillStyle='#ffadb7';ctx.font='900 21px Arial,sans-serif';ctx.fillText(category.slice(0,38),70,151);
   ctx.fillStyle='#ed2333';ctx.fillRect(70,177,86,7);ctx.fillStyle='rgba(255,255,255,.18)';ctx.fillRect(70,202,940,1);
   const fit=posterFitHeadline(ctx,headline,925,5,70,44);const lineHeight=Math.round(fit.size*1.08);
@@ -256,6 +301,7 @@ async function downloadPoster(){
  }catch(err){alert('Не удалось скачать PNG: '+(err&&err.message?err.message:'ошибка экспорта'))}
  finally{if(button){button.disabled=false;button.textContent='⬇ СКАЧАТЬ ГОТОВЫЙ ПОСТЕР PNG'}}
 }
+
 function copyText(t){if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(()=>alert('Скопировано')).catch(()=>fallback(t));else fallback(t)}
 function fallback(t){let x=document.createElement('textarea');x.value=t;document.body.appendChild(x);x.select();document.execCommand('copy');x.remove();alert('Скопировано')}
 function copyPack(){copyText(document.getElementById('hook').value+'\n\n'+document.getElementById('summary').value+'\n\n'+document.getElementById('caption').value+'\n\n'+document.getElementById('tags').value)}
@@ -281,7 +327,7 @@ function exportJSON(){let b=new Blob([JSON.stringify({saved,custom,live,lastRefr
 async function readFeed(feed){
  // Try RSS2JSON first, then direct XML through public CORS relays.
  const methods=[
-  async()=>{const r=await fetch('https://api.rss2json.com/v1/api.json?rss_url='+encodeURIComponent(feed.url),{signal:AbortSignal.timeout(9000)});if(!r.ok)throw Error('RSS2JSON HTTP '+r.status);const j=await r.json();if(j.status!=='ok'||!Array.isArray(j.items))throw Error(j.message||'RSS2JSON error');return j.items.map(x=>({title:x.title,description:x.description||x.content,link:x.link,pubDate:x.pubDate,author:x.author,imageURL:x.thumbnail||(x.enclosure&&x.enclosure.link)||(x.enclosure&&x.enclosure.url)||extractImage(x.description||x.content||'')}));},
+  async()=>{const r=await fetch('https://api.rss2json.com/v1/api.json?rss_url='+encodeURIComponent(feed.url),{signal:AbortSignal.timeout(9000)});if(!r.ok)throw Error('RSS2JSON HTTP '+r.status);const j=await r.json();if(j.status!=='ok'||!Array.isArray(j.items))throw Error(j.message||'RSS2JSON error');return j.items.map(x=>({title:x.title,description:x.description||x.content,link:x.link,pubDate:x.pubDate,author:x.author,imageURL:x.thumbnail||(x.enclosure&&x.enclosure.link)||(x.enclosure&&x.enclosure.url)||(x.image&&x.image.url)||extractImage(x.description||x.content||'')}));},
   async()=>{const r=await fetch('https://api.allorigins.win/raw?url='+encodeURIComponent(feed.url),{signal:AbortSignal.timeout(9000)});if(!r.ok)throw Error('AllOrigins HTTP '+r.status);return parseXML(await r.text());},
   async()=>{const r=await fetch('https://corsproxy.io/?url='+encodeURIComponent(feed.url),{signal:AbortSignal.timeout(9000)});if(!r.ok)throw Error('CORS proxy HTTP '+r.status);return parseXML(await r.text());}
  ];
