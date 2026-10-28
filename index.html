@@ -23,6 +23,21 @@ header{background:rgba(9,10,15,.88);border-bottom-color:#3a2028;box-shadow:0 8px
 .original-box{padding:12px;border:1px solid #3b3d49;background:#0d0e13;border-radius:10px;font-size:13px;line-height:1.55;overflow-wrap:anywhere}.original-box b{color:#ff9ba4}.original-box a{color:#ff9ba4}
 @media(max-width:650px){header{padding:15px 14px}.brand{font-size:22px}.sub{font-size:9px}.hero{border-radius:14px}.metrics{gap:7px}.metric strong{font-size:17px}.metric .muted{font-size:10px}.tools select{max-width:none;width:100%}.actions .btn{flex:0 1 auto}.modal{padding:8px}.sheet{max-height:94vh;padding:14px;border-radius:15px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;scroll-behavior:auto!important}}
+
+.poster-studio{display:grid;grid-template-columns:minmax(0,1fr);gap:13px;margin:12px 0}
+.poster-preview{position:relative;isolation:isolate;overflow:hidden;aspect-ratio:1/1;width:100%;max-width:520px;margin:0 auto;border:1px solid #583039;border-radius:14px;background:radial-gradient(ellipse at 75% 25%,#56212b 0,transparent 45%),linear-gradient(145deg,#191a20 0%,#090a0e 65%,#270d14 100%);padding:20px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 18px 55px #0008}
+.poster-preview:before{content:"";position:absolute;z-index:-1;inset:0;background:linear-gradient(125deg,transparent 0 42%,#ed23331b 42% 44%,transparent 44% 52%,#ed233318 52% 54%,transparent 54%),radial-gradient(circle at 90% 85%,#ed233330 0 2px,transparent 3px);background-size:auto,22px 22px}
+.poster-preview:after{content:"";position:absolute;z-index:-1;left:0;top:0;height:5px;width:100%;background:linear-gradient(90deg,#f02a3c 0 45%,#74131e 45% 100%)}
+.poster-brand{font-size:clamp(14px,4vw,24px);font-weight:1000;letter-spacing:1.8px;text-transform:uppercase;color:#fff}.poster-brand span{color:#ff3447}
+.poster-kicker{display:inline-flex;align-self:flex-start;margin-top:14px;padding:6px 9px;background:#ed23332b;border:1px solid #ff455566;border-radius:999px;color:#ffb0b7;font-weight:900;font-size:clamp(9px,2.3vw,12px);letter-spacing:1px;text-transform:uppercase}
+.poster-headline{display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical;overflow:hidden;margin:14px 0 10px;font-size:clamp(25px,6.8vw,46px);font-weight:1000;line-height:.99;letter-spacing:-.045em;text-transform:uppercase;overflow-wrap:anywhere;white-space:pre-wrap;text-shadow:0 2px 18px #0009}
+.poster-rule{width:48px;height:5px;background:#f12b3c;margin:14px 0}
+.poster-summary{font-size:clamp(11px,2.7vw,16px);font-weight:600;line-height:1.42;color:#dedfe5;max-width:92%;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.poster-bottom{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;border-top:1px solid #ffffff2a;padding-top:12px;margin-top:18px}
+.poster-bottom small{display:block;color:#a9adba;font-size:clamp(8px,2vw,11px);letter-spacing:1px}
+.poster-subscribe{color:#fff;background:#ed2333;border-radius:4px;padding:7px 9px;font-size:clamp(8px,2vw,11px);font-weight:950;letter-spacing:.6px;white-space:nowrap}
+.poster-note{color:#b9bdcb;font-size:11px;line-height:1.5}.studio-title{font-size:13px;font-weight:900;letter-spacing:1.2px;text-transform:uppercase;color:#ff7e8a}
+@media(min-width:700px){.poster-studio{grid-template-columns:minmax(280px,1fr) minmax(240px,.8fr);align-items:start}.poster-preview{position:sticky;top:110px}}
 </style></head><body><header><div class="wrap"><div class="brand">FIGHTORA <b>RADAR</b></div><div class="sub">FIND THE STORY. OWN THE FEED.</div></div></header><main>
 <div class="hero"><h1>Не просто новости.<br><span>Поводы для сильных постов.</span></h1><p>Свежие темы MMA, оценка редакционного потенциала и заготовки для TikTok в стиле FIGHTORA.</p><div class="actions"><button type="button" class="btn red" onclick="topStories()">🔥 Топ темы</button><button type="button" class="btn" onclick="addOpen()">＋ Добавить новость</button><button type="button" class="btn" onclick="exportJSON()">Экспорт идей</button></div></div>
 <div class="metrics"><div class="metric"><strong id="num">6</strong><span class="muted">тем в подборке</span></div><div class="metric"><strong id="savedNum">0</strong><span class="muted">идей в запасе</span></div><div class="metric"><strong>FIGHTORA</strong><span class="muted">редакционный радар</span></div></div>
@@ -36,10 +51,10 @@ header{background:rgba(9,10,15,.88);border-bottom-color:#3a2028;box-shadow:0 8px
 const seed=[{"id":"fallback1","title":"Кто заслуживает следующий титульный бой?","summary":"Резервная тема: выбери актуального претендента и проверь последние результаты, рейтинг и заявления UFC перед публикацией.","category":"Спорное мнение","date":"Резервная идея • проверь актуальность","score":78,"status":"Резервная тема — не свежая новость","why":"Провоцирует аргументированный спор, если подкрепить актуальными фактами.","hook":"КТО ДЕЙСТВИТЕЛЬНО ЗАСЛУЖИЛ ТИТУЛЬНЫЙ БОЙ?","caption":"Кто, по-вашему, заслужил следующий титульный шанс? Обоснуйте мнение. #FIGHTORA #UFC #MMA","source":"UFC News","url":"https://www.ufc.com/news"},{"id":"fallback2","title":"Деньги в UFC: сколько получают бойцы?","summary":"Резервная тема: сравни только подтверждённые выплаты из надёжных источников и чётко отличай официальные данные от оценок.","category":"Деньги / UFC","date":"Резервная идея • проверь актуальность","score":82,"status":"Резервная тема — не свежая новость","why":"Финансовые темы вызывают интерес, особенно когда цифры подтверждены.","hook":"СКОЛЬКО НА САМОМ ДЕЛЕ ЗАРАБАТЫВАЮТ БОЙЦЫ UFC?","caption":"Выплаты бойцов всегда вызывают споры. Какие цифры стоит раскрывать в следующем разборе? #FIGHTORA #UFC #MMA","source":"MMA Fighting","url":"https://www.mmafighting.com/"},{"id":"fallback3","title":"Реванш, которого больше всего ждут фанаты","summary":"Резервная тема: найди свежие подтверждённые комментарии или официальное объявление о потенциальном реванше. Не выдавай слухи за факт.","category":"Конфликт / реванш","date":"Резервная идея • проверь актуальность","score":80,"status":"Резервная тема — не свежая новость","why":"Понятный конфликт и вопрос аудитории могут дать сильную дискуссию.","hook":"ЭТОТ РЕВАНШ НУЖЕН UFC?","caption":"Какой реванш вы действительно хотите увидеть — и почему? #FIGHTORA #UFC #MMA","source":"Sherdog News","url":"https://www.sherdog.com/news/news/list/1"},{"id":"fallback4","title":"Самое спорное решение судей: разбор по раундам","summary":"Резервная тема: выбери бой, проверь официальные карточки судей, затем сравни их с критериями судейства. Не называй ограблением без разбора.","category":"Спорное мнение","date":"Резервная идея • проверь актуальность","score":76,"status":"Резервная тема — не свежая новость","why":"Разбор конкретных раундов стимулирует обсуждение, если он честный и аргументированный.","hook":"СПОРНОЕ РЕШЕНИЕ? РАЗБИРАЕМ ПО РАУНДАМ","caption":"Как вы оценили бы этот бой? Обсуждаем по раундам, без оскорблений. #FIGHTORA #UFC #MMA","source":"UFC News","url":"https://www.ufc.com/news"},{"id":"fallback5","title":"Кто из проспектов готов к топ-15?","summary":"Резервная тема: проверь актуальный рейтинг, последние соперники и результаты перспективного бойца перед выбором кандидата.","category":"Заявление бойца","date":"Резервная идея • проверь актуальность","score":72,"status":"Резервная тема — не свежая новость","why":"Аудитории нравится спорить о будущих звёздах и следующем шаге карьеры.","hook":"ЭТО БУДУЩАЯ ЗВЕЗДА UFC?","caption":"Кого из перспективных бойцов пора проверить боем с топ-15? #FIGHTORA #UFC #MMA","source":"UFC News","url":"https://www.ufc.com/news"},{"id":"fallback6","title":"Что изменилось в дивизионе после последнего турнира?","summary":"Резервная тема: проверь последние результаты и обновлённые рейтинги, прежде чем делать выводы о претендентах.","category":"Предстоящий турнир","date":"Резервная идея • проверь актуальность","score":70,"status":"Резервная тема — не свежая новость","why":"Помогает объяснить последствия турнира и возможные следующие бои.","hook":"КАК ТЕПЕРЬ ВЫГЛЯДИТ ДИВИЗИОН?","caption":"Кого теперь нужно ставить следующим в очереди? #FIGHTORA #UFC #MMA","source":"UFC Rankings","url":"https://www.ufc.com/rankings"}];
 function loadJSON(key,fallback){try{const v=JSON.parse(localStorage.getItem(key)||'null');return v==null?fallback:v}catch(_){return fallback}}
 function storeJSON(key,value){try{localStorage.setItem(key,JSON.stringify(value));return true}catch(_){return false}}
-let live=loadJSON('fr_live',[]);
+let live=loadJSON('fr_live_v2',[]);
 let custom=loadJSON('fr_custom',[]);
 let saved=loadJSON('fr_saved',[]);
-let lastRefresh=localStorage.getItem('fr_last_refresh')||'';
+let lastRefresh=localStorage.getItem('fr_last_refresh_v2')||'';
 let refreshInProgress=false;
 const feeds=[
  {name:'MMA Fighting',url:'https://www.mmafighting.com/rss/current.xml'},
@@ -123,84 +138,64 @@ async function readFeed(feed){
  let last;for(const method of methods){try{const items=await method();if(items&&items.length)return items}catch(err){last=err}}throw last||Error('Все способы загрузки недоступны')
 }
 function parseXML(raw){const doc=new DOMParser().parseFromString(raw,'text/xml');if(doc.querySelector('parsererror'))throw Error('Некорректный XML');let nodes=[...doc.querySelectorAll('item')];if(!nodes.length)nodes=[...doc.querySelectorAll('entry')];return nodes.map(n=>({title:n.querySelector('title')?.textContent||'',description:n.querySelector('description')?.textContent||n.querySelector('summary')?.textContent||n.querySelector('content')?.textContent||'',link:n.querySelector('link')?.getAttribute('href')||n.querySelector('link')?.textContent||'',pubDate:n.querySelector('pubDate')?.textContent||n.querySelector('published')?.textContent||n.querySelector('updated')?.textContent||'',author:n.querySelector('author name')?.textContent||n.querySelector('author')?.textContent||''}))}
+function hasCyrillic(s){return /[А-Яа-яЁё]/.test(String(s||''))}
+function needsRussian(s){return !hasCyrillic(s)&&/[A-Za-z]{4,}/.test(String(s||''))}
+function validRussianTranslation(source,out){const o=String(out||'').trim();if(!o)return false;if(needsRussian(source)&&!hasCyrillic(o))return false;if(needsRussian(source)&&o.toLowerCase()===String(source||'').trim().toLowerCase())return false;return true}
 async function translateToRussian(text){
- text=String(text||'').trim();if(!text)return {text:'',ok:true,method:'пустой текст'};
- const source=text.slice(0,900);
- try{
-  const u='https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=ru&dt=t&q='+encodeURIComponent(source);
-  const r=await fetch(u,{signal:AbortSignal.timeout(7000)});if(!r.ok)throw Error('Google Translate HTTP '+r.status);
-  const d=await r.json(),out=(d[0]||[]).map(x=>x&&x[0]||'').join('').trim();
-  if(out&&((out.toLowerCase()!==source.toLowerCase())||/[А-Яа-яЁё]/.test(source)))return {text:out,ok:true,method:'Google Translate'};
- }catch(_){}
- try{
-  const short=source.slice(0,480);
-  const u='https://api.mymemory.translated.net/get?q='+encodeURIComponent(short)+'&langpair=autodetect|ru';
-  const r=await fetch(u,{signal:AbortSignal.timeout(7000)});if(!r.ok)throw Error('MyMemory HTTP '+r.status);
-  const d=await r.json(),out=String(d?.responseData?.translatedText||'').trim();
-  if(out&&out.toLowerCase()!==short.toLowerCase())return {text:out,ok:true,method:'MyMemory'};
- }catch(_){}
- return {text:source,ok:/[А-Яа-яЁё]/.test(source),method:'перевод не подтверждён'};
+ text=cleanText(text);if(!text)return {text:'',ok:true,method:'пустой текст'};
+ if(!needsRussian(text))return {text,ok:true,method:'исходный текст уже на русском'};
+ const source=text.slice(0,650);
+ const providers=[
+  async()=>{const u='https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=ru&dt=t&q='+encodeURIComponent(source);const r=await fetch(u,{signal:AbortSignal.timeout(6500)});if(!r.ok)throw Error('Google Translate');const d=await r.json();const out=(d[0]||[]).map(x=>x&&x[0]||'').join('').trim();if(!validRussianTranslation(source,out))throw Error('unverified');return {text:out,ok:true,method:'Google Translate'};},
+  async()=>{const short=source.slice(0,480);const u='https://api.mymemory.translated.net/get?q='+encodeURIComponent(short)+'&langpair=autodetect|ru';const r=await fetch(u,{signal:AbortSignal.timeout(6500)});if(!r.ok)throw Error('MyMemory');const d=await r.json();const out=cleanText(d?.responseData?.translatedText||'');if(!validRussianTranslation(short,out))throw Error('unverified');return {text:out,ok:true,method:'MyMemory'};},
+  async()=>{const body=new URLSearchParams({q:source,source:'en',target:'ru',format:'text'});const r=await fetch('https://translate.terraprint.co/translate',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body,signal:AbortSignal.timeout(6500)});if(!r.ok)throw Error('LibreTranslate');const d=await r.json();const out=cleanText(d?.translatedText||'');if(!validRussianTranslation(source,out))throw Error('unverified');return {text:out,ok:true,method:'LibreTranslate'};}
+ ];
+ for(const provider of providers){try{return await provider()}catch(_){}}
+ return {text:'',ok:false,method:'перевод временно недоступен'};
 }
 function postCaption(title,summary){return `${title}.\n\nЧто думаете об этой ситуации? Пишите мнение в комментариях.\n\n#FIGHTORA #UFC #MMA #НовостиUFC`;}
 async function refreshNews(showAlert=false){
  if(refreshInProgress)return;
- refreshInProgress=true;
- const status=document.getElementById('refreshStatus');
- status.textContent='Проверяю RSS-ленты и резервные способы загрузки…';
+ refreshInProgress=true;render();
+ const status=document.getElementById('refreshStatus');status.textContent='Загружаю RSS и проверяю русский перевод…';
  const results=await Promise.allSettled(feeds.map(async feed=>({feed,items:await readFeed(feed)})));
- let entries=[],ok=0,errors=[];
- results.forEach((r)=>{if(r.status==='fulfilled'){ok++;entries.push({feed:r.value.feed,items:r.value.items})}else errors.push(String(r.reason||'Ошибка источника'))});
+ let groups=[],ok=0;
+ results.forEach(r=>{if(r.status==='fulfilled'){ok++;groups.push(r.value)}});
+ let raw=[];
+ for(const group of groups){for(const item of group.items.slice(0,3)){
+  const originalTitle=cleanText(item.title);if(!originalTitle)continue;
+  const originalSummary=cleanText(item.description||item.content||'').slice(0,420);
+  const rawDate=String(item.pubDate||item.published||item.updated||item.date||'').trim();
+  const parsed=rawDate?new Date(rawDate):null;
+  const validDate=!!parsed&&!Number.isNaN(parsed.getTime())&&parsed.getTime()>0;
+  if(validDate&&Date.now()-parsed.getTime()>7*86400000)continue;
+  if(validDate&&parsed.getTime()>Date.now()+2*86400000)continue;
+  raw.push({feed:group.feed,originalTitle,originalSummary,pubDate:validDate?parsed:null,url:safeURL(item.link,group.feed.url),imageURL:safeURL(item.imageURL,''),author:item.author||group.feed.name});
+ }}
+ raw.sort((a,b)=>(b.pubDate?.getTime()||0)-(a.pubDate?.getTime()||0));raw=raw.slice(0,10);
  let fresh=[];
- for(const group of entries){
-  const feed=group.feed;
-  for(const item of group.items.slice(0,6)){
-   const originalTitle=cleanText(item.title);if(!originalTitle)continue;
-   const originalDesc=cleanText(item.description||item.content||'').slice(0,320);
-   const rawDate=String(item.pubDate||item.published||item.updated||item.date||'').trim();
-   const parsedDate=rawDate?new Date(rawDate):null;
-   const validDate=!!parsedDate&&!Number.isNaN(parsedDate.getTime())&&parsedDate.getTime()>0;
-   if(validDate&&Date.now()-parsedDate.getTime()>7*86400000)continue;
-   if(validDate&&parsedDate.getTime()>Date.now()+2*86400000)continue;
-   let title=originalTitle,desc=originalDesc,translationOK=true,translationMethod='не требовался';
-   const titleTr=await translateToRussian(originalTitle);
-   title=titleTr.text;
-   translationOK=titleTr.ok;
-   translationMethod=titleTr.method;
-   if(originalDesc){
-    const descTr=await translateToRussian(originalDesc.slice(0,430));
-    desc=descTr.text;
-    translationOK=translationOK&&descTr.ok;
-    if(descTr.method!==translationMethod)translationMethod=translationMethod+' + '+descTr.method;
-   }
-   const url=safeURL(item.link,feed.url);
-   const category=categoryFor(originalTitle+' '+originalDesc+' '+title);
-   const date=validDate?parsedDate.toLocaleString('ru-RU',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'}):'Дата публикации не указана';
-   let score=scoreItem(originalTitle,originalDesc);
-   if(!validDate)score=Math.max(40,score-7);
-   if(!translationOK)score=Math.max(40,score-3);
-   const flags=[validDate?'Дата RSS получена':'Дата публикации не указана — проверь источник',translationOK?'Перевод: '+translationMethod:'Перевод не подтверждён — заголовок может остаться на языке оригинала'];
-   fresh.push({id:'live_'+btoa(unescape(encodeURIComponent((url||originalTitle).slice(0,180)))).replace(/[^a-zA-Z0-9]/g,'').slice(0,24),title,summary:desc||'Краткое описание отсутствует. Открой оригинал и проверь детали.',category,date,score,status:flags.join(' • '),why:'Автоматическая подборка по RSS. Оценка редакционного потенциала субъективна; проверь оригинальную публикацию.',hook:makeHook(title),caption:postCaption(title,desc||'Проверь подробности в первоисточнике'),originalTitle,originalSummary:originalDesc,translationOK,translationMethod,source:item.author||feed.name,url,sortDate:validDate?parsedDate.toISOString():''});
-  }
- }
- refreshInProgress=false;
- if(fresh.length){
-  const old=new Map(live.map(n=>[n.url||n.id,n]));
-  fresh.forEach(n=>old.set(n.url||n.id,n));
-  live=Array.from(old.values()).slice(-100);
-  storeJSON('fr_live',live);
-  lastRefresh=new Date().toISOString();
-  try{localStorage.setItem('fr_last_refresh',lastRefresh)}catch(_){}
-  render();
-  status.textContent='Обновлено: '+fresh.length+' записей • источников ответило: '+ok+'/'+feeds.length+' • '+new Date().toLocaleTimeString('ru-RU');
-  if(showAlert)alert('Загружено '+fresh.length+' записей; ответило источников: '+ok+'/'+feeds.length+'. Новости без даты и неполный перевод помечены. Проверь оригиналы перед публикацией.');
- }else{
-  render();
-  status.textContent='Свежие RSS-данные не получены ('+ok+'/'+feeds.length+' источников). Резервные идеи — не новости.';
-  if(showAlert)alert('Сейчас не получилось получить свежие RSS-ленты. Резервные темы не выдаются за новости. Попробуй ещё раз чуть позже.');
- }
+ const jobs=raw.map(async item=>{
+  const pair=await Promise.all([translateToRussian(item.originalTitle),item.originalSummary?translateToRussian(item.originalSummary):Promise.resolve({text:'',ok:true,method:'описание отсутствует'})]);
+  const trTitle=pair[0],trSummary=pair[1],transOK=trTitle.ok;
+  const title=transOK?trTitle.text:'Перевод заголовка временно недоступен';
+  const desc=transOK?(trSummary.ok?trSummary.text:'Перевод описания временно недоступен — открой оригинал.'):'Открой первоисточник: автоматический перевод сейчас недоступен.';
+  let score=scoreItem(item.originalTitle,item.originalSummary);
+  if(!item.pubDate)score=Math.max(40,score-7);if(!transOK)score=Math.max(40,score-5);
+  const date=item.pubDate?item.pubDate.toLocaleString('ru-RU',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'}):'Дата публикации не указана';
+  const hook=transOK?makeHook(title):'ПРОВЕРЬ НОВОСТЬ В ПЕРВОИСТОЧНИКЕ';
+  const posterSummary=(transOK&&trSummary.ok?trSummary.text:'Подробности — в первоисточнике.').slice(0,210);
+  const flags=[item.pubDate?'Дата RSS получена':'Дата публикации не указана — проверь источник',transOK?'Перевод: '+trTitle.method:'Перевод не прошёл проверку'];
+  fresh.push({id:'live_'+btoa(unescape(encodeURIComponent((item.url||item.originalTitle).slice(0,180)))).replace(/[^a-zA-Z0-9]/g,'').slice(0,24),title,summary:desc,category:categoryFor(item.originalTitle+' '+item.originalSummary),date,score,status:flags.join(' • '),why:'Тема получена из RSS. Потенциал — редакционная оценка, а не гарантия просмотров.',hook,posterSummary,caption:postCaption(title,desc),originalTitle:item.originalTitle,originalSummary:item.originalSummary,translationOK:transOK,translationMethod:transOK?trTitle.method:'не удалось подтвердить',source:item.author,url:item.url,imageURL:item.imageURL,sortDate:item.pubDate?item.pubDate.toISOString():'',schema:2});
+ });
+ for(let i=0;i<jobs.length;i+=4){await Promise.all(jobs.slice(i,i+4));status.textContent='Перевожу новости на русский… '+Math.min(i+4,jobs.length)+'/'+jobs.length;}
+ fresh.sort((a,b)=>(Date.parse(b.sortDate)||0)-(Date.parse(a.sortDate)||0));
+ live=fresh;storeJSON('fr_live_v2',live);lastRefresh=new Date().toISOString();try{localStorage.setItem('fr_last_refresh_v2',lastRefresh)}catch(_){}
+ refreshInProgress=false;render();
+ status.textContent=fresh.length?'Обновлено: '+fresh.length+' тем • ответило источников: '+ok+'/'+feeds.length+' • '+new Date().toLocaleTimeString('ru-RU'):'Свежие новости не получены ('+ok+'/'+feeds.length+' источников). Резервные идеи — не новости.';
+ if(showAlert)alert(fresh.length?'Загружено '+fresh.length+' тем. Непереведённые заголовки отмечены отдельно. Проверь оригиналы перед публикацией.':'Не получилось загрузить свежие новости. Резервные темы остаются идеями, не новостями.');
 }
 render();
-if(!lastRefresh||Date.now()-new Date(lastRefresh).getTime()>15*60*1000)refreshNews(false);
+if(!live.length||!lastRefresh||Date.now()-new Date(lastRefresh).getTime()>15*60*1000)refreshNews(false);
 setInterval(()=>refreshNews(false),15*60*1000);
 
 // Mobile tap fallback for primary controls.
